@@ -1,6 +1,6 @@
-_welcome:
-    pattern:  /
-    defaults: { _controller: AcmeDemoBundle:Welcome:index }
+EntryBundle:
+    resource: "@EntryBundle/Resources/config/routing.yml"
+    prefix:   /
 
 _assetic:
     resource: .
