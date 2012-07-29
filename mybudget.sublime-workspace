@@ -1,0 +1,205 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"sans",
+				"sans-serif"
+			],
+			[
+				"todo",
+				"todo_list"
+			],
+			[
+				"li",
+				"li_todo"
+			],
+			[
+				"User",
+				"UserInterface"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Library/WebServer/Documents/cupon2/src/Cupon/UsuarioBundle/Resources/config/routing.yml",
+		"/Library/WebServer/Documents/cupon2/src/Cupon/UsuarioBundle/Controller/DefaultController.php",
+		"/Users/home/Desktop/icons/todo.html",
+		"/Users/home/Downloads/styled_dropdown/markup/js/jcf.select.js",
+		"/Library/WebServer/Documents/wattzon/deploy/project/web/wattzon/css/wattzon.css",
+		"/Library/WebServer/Documents/cupon2/src/Cupon/UsuarioBundle/Form/Frontend/UsuarioType.php",
+		"/Library/WebServer/Documents/cupon2/src/Cupon/UsuarioBundle/Resources/views/Default/registro.html.twig",
+		"/Library/WebServer/Documents/cupon2/src/Cupon/UsuarioBundle/Resources/views/Default/cajaLogin.html.twig",
+		"/Library/WebServer/Documents/cupon2/app/config/config.yml",
+		"/Library/WebServer/Documents/cupon2/src/Cupon/UsuarioBundle/Entity/Usuario.php",
+		"/Library/WebServer/Documents/cupon2/src/Cupon/OfertaBundle/Controller/DefaultController.php",
+		"/Library/WebServer/Documents/cupon2/src/Cupon/OfertaBundle/Util/Util.php",
+		"/Library/WebServer/Documents/cupon2/src/Cupon/UsuarioBundle/DataFixtures/ORM/usuarios.php",
+		"/Library/WebServer/Documents/cupon2/src/Cupon/TiendaBundle/DataFixtures/ORM/tiendas.php",
+		"/Library/WebServer/Documents/cupon2/src/Cupon/TiendaBundle/Entity/Tienda.php",
+		"/Library/WebServer/Documents/cupon2/src/Cupon/OfertaBundle/DataFixtures/ORM/ofertas.php",
+		"/Library/WebServer/Documents/cupon2/src/Cupon/OfertaBundle/Entity/Oferta.php",
+		"/Library/WebServer/Documents/cupon2/app/config/security.yml",
+		"/Library/WebServer/Documents/surgiview/trunk/deploy/surgiview/web/css/style.css",
+		"/Library/WebServer/Documents/cupon2/src/Cupon/UsuarioBundle/Resources/views/Default/login.html.twig",
+		"/Library/WebServer/Documents/cupon2/app/Resources/views/frontend.html.twig",
+		"/Library/WebServer/Documents/cupon2/src/Cupon/UsuarioBundle/Resources/config/services.yml",
+		"/Library/WebServer/Documents/cupon2/src/Cupon/UsuarioBundle/Listener/LoginListener.php",
+		"/Library/WebServer/Documents/date.php",
+		"/Users/home/Desktop/date.php",
+		"/Library/WebServer/Documents/unseat.me/branches/RB-2.0/deploy/project/web/uploads/sitemap.xml",
+		"/Library/WebServer/Documents/cupon2/app/config/routing.yml",
+		"/Library/WebServer/Documents/cupon2/src/Cupon/UsuarioBundle/Entity/UsuarioRepository.php",
+		"/Library/WebServer/Documents/cupon2/src/Cupon/UsuarioBundle/Resources/views/Default/compras.html.twig",
+		"/Library/WebServer/Documents/cupon2/src/Cupon/OfertaBundle/Resources/views/Default/includes/minioferta.html.twig",
+		"/Library/WebServer/Documents/cupon2/src/Cupon/TiendaBundle/Resources/config/routing.yml",
+		"/Library/WebServer/Documents/cupon2/src/Cupon/TiendaBundle/Controller/DefaultController.php",
+		"/Library/WebServer/Documents/cupon2/src/Cupon/TiendaBundle/Entity/TiendaRepository.php",
+		"/Library/WebServer/Documents/cupon2/src/Cupon/TiendaBundle/Resources/views/Default/portada.html.twig",
+		"/Library/WebServer/Documents/cupon2/src/Cupon/CiudadBundle/Resources/config/routing.yml",
+		"/Library/WebServer/Documents/cupon2/src/Cupon/CiudadBundle/Controller/DefaultController.php",
+		"/Library/WebServer/Documents/cupon2/src/Cupon/CiudadBundle/Entity/Ciudad.php",
+		"/Library/WebServer/Documents/cupon2/src/Cupon/CiudadBundle/Entity/CiudadRepository.php",
+		"/Library/WebServer/Documents/cupon2/src/Cupon/OfertaBundle/Entity/OfertaRepository.php",
+		"/Library/WebServer/Documents/cupon2/src/Cupon/CiudadBundle/Resources/views/Default/recientes.html.twig",
+		"/Library/WebServer/Documents/cupon2/app/config/services.yml",
+		"/Library/WebServer/Documents/cupon2/src/Cupon/OfertaBundle/Twig/Extension/CuponExtension.php",
+		"/Library/WebServer/Documents/cupon2/src/Cupon/OfertaBundle/Resources/views/Default/includes/oferta.html.twig",
+		"/Library/WebServer/Documents/cupon2/src/Cupon/CiudadBundle/Resources/views/Default/listaCiudades.html.twig",
+		"/Library/WebServer/Documents/cupon2/src/Cupon/OfertaBundle/Resources/views/Default/detalle.html.twig",
+		"/Library/WebServer/Documents/cupon2/src/Cupon/OfertaBundle/Resources/views/Default/portada.html.twig",
+		"/Library/WebServer/Documents/cupon2/vendor/doctrine/lib/Doctrine/ORM/Query.php",
+		"/Library/WebServer/Documents/cupon2/src/Cupon/OfertaBundle/Resources/config/routing.yml",
+		"/Library/WebServer/Documents/cupon2/src/Cupon/OfertaBundle/Resources/public/css/normalizar.css",
+		"/Library/WebServer/Documents/cupon2/src/Cupon/OfertaBundle/Resources/public/css/comun.css",
+		"/Library/WebServer/Documents/cupon2/src/Cupon/OfertaBundle/Resources/public/css/frontend.css",
+		"/Library/WebServer/Documents/cupon2/app/Resources/views/base.html.twig",
+		"/Library/WebServer/Documents/boilerplate/index.html"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"replaceAll",
+			"username",
+			"getParameterMappings",
+			"merge"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 264.0,
+	"status_bar_visible": true
+}
