@@ -13,6 +13,10 @@ homepage:
     defaults: { _controller: EntryBundle:Default:index }
 
 #Imports Bundles routing
+CategoryBundle:
+    resource: "@CategoryBundle/Resources/config/routing.yml"
+    prefix:   /
+
 EntryBundle:
     resource: "@EntryBundle/Resources/config/routing.yml"
     prefix:   /
