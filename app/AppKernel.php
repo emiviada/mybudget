@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new MyBudget\EntryBundle\EntryBundle(),
             new MyBudget\UserBundle\UserBundle(),
             new MyBudget\CategoryBundle\CategoryBundle(),
+            new MyBudget\BackendBundle\BackendBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

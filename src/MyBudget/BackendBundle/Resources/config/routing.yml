@@ -1,0 +1,11 @@
+BackendBundle_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: BackendBundle:Default:index }
+
+BackendCategory:
+    resource: "@BackendBundle/Resources/config/routing/category.yml"
+    prefix: /category
+
+BackendEntry:
+    resource: "@BackendBundle/Resources/config/routing/entry.yml"
+    prefix:   /entry

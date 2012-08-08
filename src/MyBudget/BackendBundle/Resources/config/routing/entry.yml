@@ -1,0 +1,30 @@
+entry:
+    pattern:  /
+    defaults: { _controller: "BackendBundle:Entry:index" }
+
+entry_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "BackendBundle:Entry:show" }
+
+entry_new:
+    pattern:  /new
+    defaults: { _controller: "BackendBundle:Entry:new" }
+
+entry_create:
+    pattern:  /create
+    defaults: { _controller: "BackendBundle:Entry:create" }
+    requirements: { _method: post }
+
+entry_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "BackendBundle:Entry:edit" }
+
+entry_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "BackendBundle:Entry:update" }
+    requirements: { _method: post }
+
+entry_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "BackendBundle:Entry:delete" }
+    requirements: { _method: post }

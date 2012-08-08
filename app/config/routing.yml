@@ -10,9 +10,13 @@ logout:
 
 homepage:
     pattern: /
-    defaults: { _controller: EntryBundle:Default:index }
+    defaults: { _controller: BackendBundle:Default:index }
 
 #Imports Bundles routing
+BackendBundle:
+    resource: "@BackendBundle/Resources/config/routing.yml"
+    prefix:   /
+
 CategoryBundle:
     resource: "@CategoryBundle/Resources/config/routing.yml"
     prefix:   /
