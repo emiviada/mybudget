@@ -3,12 +3,38 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}MyBudget{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %}
+            <link href="{{ asset('bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
+            <link href="{{ asset('bundles/backend/css/style.css')}}" rel="stylesheet" type="text/css" />
+        {% endblock %}
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-        <a href="{{ path('logout') }}">Cerrar Sesi&oacute;n</a>
-        {% block body %}{% endblock %}
+        <!-- Header -->
+        <header class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="#">My Budget</a>
+                    <nav class="nav-collapse collapse">
+                        <ul class="nav">
+                            <li class="active"><a href="#">Item 1</a></li>
+                            <li><a href="#item2">Item2</a></li>
+                            <li><a href="{{ path('logout') }}">Cerrar Sesi&oacute;n</a></li>
+                        </ul>
+                    </nav><!--/.nav-collapse -->
+                </div>
+            </div>
+        </header>
+        
+        <div class="container">
+            {% block body %}{% endblock %}
+        </div>
+        
         {% block javascripts %}{% endblock %}
     </body>
 </html>
