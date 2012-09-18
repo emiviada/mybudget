@@ -3,8 +3,16 @@ security:
         secured:
             pattern:  ^/
             anonymous: ~
-            form_login: ~
+            form_login:
+                login_path: login
+                check_path: login_check
+                use_referer: true
+                default_target_path: homepage
+                always_use_default_target_path: true
             logout: ~
+            remember_me:
+                key: mybudget410
+                lifetime: 3600
 
     access_control:
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }

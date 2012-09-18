@@ -6,6 +6,7 @@
         {% block stylesheets %}
             <link href="{{ asset('bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
             <link href="{{ asset('bundles/backend/css/style.css')}}" rel="stylesheet" type="text/css" />
+            <link href="{{ asset('bundles/backend/css/space.css')}}" rel="stylesheet" type="text/css" />
         {% endblock %}
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
     </head>
@@ -19,14 +20,16 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-                    <a class="brand" href="#">My Budget</a>
-                    <nav class="nav-collapse collapse">
-                        <ul class="nav">
-                            <li class="active"><a href="#">Item 1</a></li>
-                            <li><a href="#item2">Item2</a></li>
-                            <li><a href="{{ path('logout') }}">Cerrar Sesi&oacute;n</a></li>
-                        </ul>
-                    </nav><!--/.nav-collapse -->
+                    <a class="brand" href="{{ path('homepage') }}">My Budget</a>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <nav class="nav-collapse collapse">
+                            <ul class="nav">
+                                <li {% if(app.request.attributes.get('_route') == 'category') %}class="active"{% endif %}><a href="{{ path('category_list') }}">Category List</a></li>
+                                <li {% if(app.request.attributes.get('_route') == 'entry') %}class="active"{% endif %}><a href="{{ path('entry_list') }}">Entry List</a></li>
+                                <li><a href="{{ path('logout') }}">Cerrar Sesi&oacute;n</a></li>
+                            </ul>
+                        </nav>
+                    {% endif %}
                 </div>
             </div>
         </header>
