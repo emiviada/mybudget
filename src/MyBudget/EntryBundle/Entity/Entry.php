@@ -3,6 +3,7 @@
 namespace MyBudget\EntryBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity
@@ -29,6 +30,18 @@ class Entry
 
 	/** @ORM\Column(type="string", length=500) */
 	protected $comment;
+
+    /**
+     * @Gedmo\Timestampable(on="create")
+     * @ORM\Column(name="created_at", type="datetime")
+     */
+    private $created_at;
+
+    /**
+     * @Gedmo\Timestampable(on="update")
+     * @ORM\Column(name="updated_at", type="datetime")
+     */
+    private $updated_at;
 
     /** Setters **/
     /**
@@ -69,6 +82,16 @@ class Entry
     public function setCategory(\MyBudget\CategoryBundle\Entity\Category $category)
     {
         $this->category = $category;
+    }
+
+    public function setCreatedAt($created_at)
+    {
+        $this->created_at = $created_at;
+    }
+
+    public function setUpdatedAt($updated_at)
+    {
+        $this->updated_at = $updated_at;
     }
 
     /** Getters **/
@@ -120,6 +143,16 @@ class Entry
     public function getCategory()
     {
         return $this->category;
+    }
+
+    public function getCreatedAt()
+    {
+        return $this->created_at;
+    }
+
+    public function getUpdatedAt()
+    {
+        return $this->updated_at;
     }
 
     /** 

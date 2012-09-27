@@ -3,6 +3,7 @@
 namespace MyBudget\CategoryBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity
@@ -27,6 +28,18 @@ class Category
 	/** @ORM\Column(type="string", length=100) */
 	protected $slug;
 
+	/**
+     * @Gedmo\Timestampable(on="create")
+     * @ORM\Column(name="created_at", type="datetime")
+     */
+    private $created_at;
+
+    /**
+     * @Gedmo\Timestampable(on="update")
+     * @ORM\Column(name="updated_at", type="datetime")
+     */
+    private $updated_at;
+
 	/** Setters **/
 	public function setName($name)
 	{
@@ -41,6 +54,16 @@ class Category
 	public function setSlug($slug)
 	{
 		$this->slug = $slug;
+	}
+
+	public function setCreatedAt($created_at)
+	{
+		$this->created_at = $created_at;
+	}
+
+	public function setUpdatedAt($updated_at)
+	{
+		$this->updated_at = $updated_at;
 	}
 
 	/** Getters **/
@@ -62,6 +85,16 @@ class Category
 	public function getSlug()
 	{
 		return $this->slug;
+	}
+
+	public function getCreatedAt()
+	{
+		return $this->created_at;
+	}
+
+	public function getUpdatedAt()
+	{
+		return $this->updated_at;
 	}
 
 	/** 

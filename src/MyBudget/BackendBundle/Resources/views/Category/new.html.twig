@@ -6,15 +6,8 @@
 	<form action="{{ path('category_create') }}" method="post" {{ form_enctype(form) }}>
 	    {{ form_widget(form) }}
 	    <p>
-	        <button type="submit">Create</button>
+	        <a class="mrl" href="{{ path('category') }}"><i class="icon-chevron-left"></i>Back to the list</a>
+	        <button class="btn btn-success" type="submit">Create</button>
 	    </p>
 	</form>
-
-	<ul class="record_actions">
-	    <li>
-	        <a href="{{ path('category') }}">
-	            Back to the list
-	        </a>
-	    </li>
-	</ul>
 {% endblock %}
