@@ -3,6 +3,7 @@
 namespace MyBudget\CategoryBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
@@ -19,10 +20,13 @@ class Category
 	 */
 	protected $id;
 
-	/** @ORM\Column(type="string", length=100) */
+	/** 
+	 * @ORM\Column(type="string", length=100)
+	 * @Assert\NotBlank(message = "El nombre de la categoria es requerido.")
+	 */
 	protected $name;
 
-	/** @ORM\Column(type="string", length=500) */
+	/** @ORM\Column(type="string", length=500, nullable=true) */
 	protected $description;
 
 	/** 

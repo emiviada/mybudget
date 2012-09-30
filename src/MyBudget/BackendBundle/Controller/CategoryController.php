@@ -157,21 +157,16 @@ class CategoryController extends Controller
      */
     public function deleteAction($id)
     {
-        $form = $this->createDeleteForm($id);
-        $request = $this->getRequest();
-
-        $form->bindRequest($request);
-
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getEntityManager();
-            $entity = $em->getRepository('CategoryBundle:Category')->find($id);
-
-            if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Category entity.');
-            }
-
+        $em = $this->getDoctrine()->getEntityManager();
+        $entity = $em->getRepository('CategoryBundle:Category')->find($id);
+        if ($entity)
+        {
             $em->remove($entity);
             $em->flush();
+        }
+        else
+        {
+            throw $this->createNotFoundException('Unable to find Category entity.');
         }
 
         return $this->redirect($this->generateUrl('category'));

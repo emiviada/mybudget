@@ -1,13 +1,31 @@
 {% extends '::layout.html.twig' %}
 
 {% block body %}
-	<h1>Category creation</h1>
+	<h1 class="mtn mbm">Agregar Categor&iacute;a</h1>
 
-	<form action="{{ path('category_create') }}" method="post" {{ form_enctype(form) }}>
-	    {{ form_widget(form) }}
+	{% form_theme form 'BackendBundle:Form:fields_errors.html.twig' %}
+
+	<form action="{{ path('category_create') }}" method="post" {{ form_enctype(form) }} novalidate>
+	    {{ form_errors(form) }}
+
+	    <!-- Name field -->
+	    <div>
+		    {{ form_label(form.name, 'Nombre') }}
+		    {{ form_widget(form.name, { 'attr': { 'class': 'input-xxlarge' } }) }}
+		    {{ form_errors(form.name) }}
+		</div>
+
+		<!-- Description field -->
+	    <div>
+		    {{ form_label(form.description, 'Descripcion') }}
+		    {{ form_widget(form.description, { 'attr': { 'class': 'h75p input-xxlarge' } }) }}
+		    {{ form_errors(form.description) }}
+		</div>
+
+	    {{ form_rest(form) }}
 	    <p>
-	        <a class="mrl" href="{{ path('category') }}"><i class="icon-chevron-left"></i>Back to the list</a>
-	        <button class="btn btn-success" type="submit">Create</button>
+	        <a class="mrl" href="{{ path('category') }}" title="Volver"><i class="icon-chevron-left"></i>Volver al listado</a>
+	        <button class="btn btn-success" type="submit">Agregar</button>
 	    </p>
 	</form>
 {% endblock %}

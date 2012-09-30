@@ -1,33 +1,33 @@
 {% extends '::layout.html.twig' %}
 
 {% block body %}
-    <h1>Category list</h1>
+    <h1 class="mtn mbm">Categor&iacute;as</h1>
 
     <table class="records_list table table-striped">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Actions</th>
+                <th>Nombre</th>
+                <th>Descripci&oacute;n</th>
+                <th class="txtc">Acciones</th>
             </tr>
         </thead>
         <tbody>
         {% for entity in entities %}
             <tr>
                 <td>{{ entity.id }}</td>
-                <td>{{ entity.name }}</td>
-                <td>{{ entity.description }}</td>
-                <td>
+                <td class="w25">{{ entity.name }}</td>
+                <td class="w40">{{ entity.description }}</td>
+                <td class="w25 txtc">
                     <ul class="list-actions">
                         <li>
-                            <a href="{{ path('category_show', { 'id': entity.id }) }}"><i class="icon-eye-open"></i> show</a> &nbsp;
+                            <a href="{{ path('category_show', { 'id': entity.id }) }}" title="Ver categor&iacute;a"><i class="icon-eye-open"></i> Ver</a> &nbsp;
                         </li>
                         <li>
-                            <a href="{{ path('category_edit', { 'id': entity.id }) }}"><i class="icon-pencil"></i> edit</a> &nbsp;
+                            <a href="{{ path('category_edit', { 'id': entity.id }) }}" title="Editar categor&iacute;a"><i class="icon-pencil"></i> Editar</a> &nbsp;
                         </li>
                         <li>
-                            <a href="{{ path('category_delete', { 'id': entity.id }) }}"><i class="icon-trash"></i> delete</a>
+                            <a class="delete-confirmation" href="{{ path('category_delete', { 'id': entity.id }) }}" title="Borrar categor&iacute;a"><i class="icon-trash"></i> Borrar</a>
                         </li>
                     </ul>
                 </td>
@@ -36,5 +36,7 @@
         </tbody>
     </table>
 
-    <a href="{{ path('category_new') }}" class="btn">Create a new Category</a>
+    <hr/>
+
+    <a href="{{ path('category_new') }}" class="btn">Agregar Categor&iacute;a</a>
 {% endblock %}

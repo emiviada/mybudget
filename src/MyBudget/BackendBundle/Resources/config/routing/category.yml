@@ -27,4 +27,3 @@ category_update:
 category_delete:
     pattern:  /{id}/delete
     defaults: { _controller: "BackendBundle:Category:delete" }
-    requirements: { _method: post }
