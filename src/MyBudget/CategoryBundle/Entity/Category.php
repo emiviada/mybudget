@@ -25,7 +25,10 @@ class Category
 	/** @ORM\Column(type="string", length=500) */
 	protected $description;
 
-	/** @ORM\Column(type="string", length=100) */
+	/** 
+	 * @Gedmo\Slug(fields={"name"})
+	 * @ORM\Column(type="string", length=100, unique=true)
+	 */
 	protected $slug;
 
 	/**
