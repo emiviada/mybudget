@@ -1,20 +1,52 @@
 {% extends '::layout.html.twig' %}
 
 {% block body %}
-	<h1>Entry creation</h1>
+	<h1 class="mtn mbm">Agregar Movimiento</h1>
 
-	<form action="{{ path('entry_create') }}" method="post" {{ form_enctype(form) }}>
-	    {{ form_widget(form) }}
-	    <p>
-	        <button type="submit">Create</button>
+	{% form_theme form 'BackendBundle:Form:fields_errors.html.twig' %}
+
+	<form action="{{ path('entry_create') }}" method="post" {{ form_enctype(form) }} novalidate>
+	    {{ form_errors(form) }}
+
+	    <!-- Category field -->
+	    <div>
+		    {{ form_label(form.category, 'Categoria') }}
+		    {{ form_widget(form.category, { 'attr': { 'class': 'input-xxlarge' } }) }}
+		    {{ form_errors(form.category) }}
+		</div>
+
+		<!-- Date entry field -->
+	    <div>
+		    {{ form_label(form.date_entry, 'Fecha') }}
+		    {{ form_widget(form.date_entry, { 'attr': { 'class': 'input-xxlarge' } }) }}
+		    {{ form_errors(form.date_entry) }}
+		</div>
+
+		<!-- Haber field -->
+	    <div>
+		    {{ form_label(form.haber, 'Haber') }}
+		    {{ form_widget(form.haber, { 'attr': { 'class': 'input-xxlarge' } }) }}
+		    {{ form_errors(form.haber) }}
+		</div>
+
+		<!-- Value field -->
+	    <div>
+		    {{ form_label(form.value, 'Valor') }}
+		    {{ form_widget(form.value, { 'attr': { 'class': 'input-xxlarge' } }) }}
+		    {{ form_errors(form.value) }}
+		</div>
+
+		<!-- Comment field -->
+	    <div>
+		    {{ form_label(form.comment, 'Comentario') }}
+		    {{ form_widget(form.comment, { 'attr': { 'class': 'h75p input-xxlarge' } }) }}
+		    {{ form_errors(form.comment) }}
+		</div>
+	
+		{{ form_rest(form) }}
+		<p>
+	        <a class="mrl" href="{{ path('entry') }}" title="Volver"><i class="icon-chevron-left"></i>Volver al listado</a>
+	        <button class="btn btn-success" type="submit">Agregar</button>
 	    </p>
-	</form>
-
-	<ul class="record_actions">
-	    <li>
-	        <a href="{{ path('entry') }}">
-	            Back to the list
-	        </a>
-	    </li>
-	</ul>
+    </form>
 {% endblock %}

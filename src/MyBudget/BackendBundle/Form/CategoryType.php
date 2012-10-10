@@ -10,6 +10,7 @@ class CategoryType extends AbstractType
 {
     public function buildForm(FormBuilder $builder, array $options)
     {
+        $builder->add('parent', null, array('empty_value' => 'Selecciona...'));
         $builder->add('name');
         $builder->add('description', 'textarea');
     }

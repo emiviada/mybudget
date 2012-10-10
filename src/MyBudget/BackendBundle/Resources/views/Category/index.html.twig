@@ -8,6 +8,7 @@
             <tr>
                 <th>Id</th>
                 <th>Nombre</th>
+                <th>Padre</th>
                 <th>Descripci&oacute;n</th>
                 <th class="txtc">Acciones</th>
             </tr>
@@ -16,7 +17,8 @@
         {% for entity in entities %}
             <tr>
                 <td>{{ entity.id }}</td>
-                <td class="w25">{{ entity.name }}</td>
+                <td class="w20">{{ entity.name }}</td>
+                <td class="w15">{{ entity.parent }}</td>
                 <td class="w40">{{ entity.description }}</td>
                 <td class="w25 txtc">
                     <ul class="list-actions">

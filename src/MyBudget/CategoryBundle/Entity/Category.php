@@ -7,8 +7,11 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
+ * @Gedmo\Tree(type="nested")
  * @ORM\Entity
  * @ORM\Table(name="category")
+ * use repository for handy tree functions
+ * @ORM\Entity(repositoryClass="Gedmo\Tree\Entity\Repository\NestedTreeRepository")
  */
 class Category
 {
@@ -28,6 +31,43 @@ class Category
 
 	/** @ORM\Column(type="string", length=500, nullable=true) */
 	protected $description;
+
+	/**
+     * @Gedmo\TreeLeft
+     * @ORM\Column(name="lft", type="integer")
+     */
+    private $lft;
+
+	/**
+     * @Gedmo\TreeLevel
+     * @ORM\Column(name="level", type="integer")
+     */
+    private $level;
+
+    /**
+     * @Gedmo\TreeRight
+     * @ORM\Column(name="rgt", type="integer")
+     */
+    private $rgt;
+
+    /**
+     * @Gedmo\TreeRoot
+     * @ORM\Column(name="root", type="integer", nullable=true)
+     */
+    private $root;
+
+    /**
+     * @Gedmo\TreeParent
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="children")
+     * @ORM\JoinColumn(name="parent_id", referencedColumnName="id", onDelete="SET NULL")
+     */
+    private $parent;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Category", mappedBy="parent")
+     * @ORM\OrderBy({"lft" = "ASC"})
+     */
+    private $children;
 
 	/** 
 	 * @Gedmo\Slug(fields={"name"})
@@ -57,6 +97,11 @@ class Category
 	{
 		$this->description = $description;
 	}
+
+	public function setParent(Category $parent = null)
+    {
+        $this->parent = $parent;    
+    }
 
 	public function setSlug($slug)
 	{
@@ -88,6 +133,11 @@ class Category
 	{
 		return $this->description;
 	}
+
+	public function getParent()
+    {
+        return $this->parent;   
+    }
 
 	public function getSlug()
 	{

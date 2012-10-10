@@ -1,45 +1,44 @@
 {% extends '::layout.html.twig' %}
 
 {% block body %}
-    <h1>Entry</h1>
+    <h1 class="mtn mbm">Ver Movimiento</h1>
 
-    <table class="record_properties">
+    <table class="record_properties table table-striped table-bordered">
         <tbody>
             <tr>
-                <th>Id</th>
+                <th class="w20">Id</th>
                 <td>{{ entity.id }}</td>
             </tr>
             <tr>
-                <th>Haber</th>
-                <td>{{ entity.haber }}</td>
+                <th class="w20">Fecha</th>
+                <td>{{ entity.dateEntry|date('d/m/Y') }}</td>
             </tr>
             <tr>
-                <th>Value</th>
-                <td>{{ entity.value }}</td>
+                <th class="w20">
+                    {% if entity.haber %}Haber{% else %}Debe{% endif %}
+                </th>
+                <td>
+                    <img src="{{ asset('bundles/backend/images/tick-icon.png')}}" alt="ok" width="24" />
+                </td>
             </tr>
             <tr>
-                <th>Comment</th>
+                <th class="w20">Categor&iacute;a</th>
+                <td>{{ entity.category }}</td>
+            </tr>
+            <tr>
+                <th class="w20">Valor</th>
+                <td>${{ entity.value }}</td>
+            </tr>
+            <tr>
+                <th class="w20">Comentario</th>
                 <td>{{ entity.comment }}</td>
             </tr>
         </tbody>
     </table>
 
-    <ul class="record_actions">
-        <li>
-            <a href="{{ path('entry') }}">
-                Back to the list
-            </a>
-        </li>
-        <li>
-            <a href="{{ path('entry_edit', { 'id': entity.id }) }}">
-                Edit
-            </a>
-        </li>
-        <li>
-            <form action="{{ path('entry_delete', { 'id': entity.id }) }}" method="post">
-                {{ form_widget(delete_form) }}
-                <button type="submit">Delete</button>
-            </form>
-        </li>
-    </ul>
+    <p>
+        <a class="mrl" href="{{ path('entry') }}" title="Volver"><i class="icon-chevron-left"></i>Volver al listado</a>
+        <a class="mrl" href="{{ path('entry_edit', { 'id': entity.id }) }}" title="Editar"><i class="icon-pencil"></i> Editar</a>
+        <a class="btn btn-danger delete-confirmation" href="{{ path('entry_delete', { 'id': entity.id }) }}" title="Borrar">Borrar</a>
+    </p>
 {% endblock %}

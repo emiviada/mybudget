@@ -22,6 +22,9 @@ class Entry
 	/** @ORM\ManyToOne(targetEntity="MyBudget\CategoryBundle\Entity\Category") */
 	protected $category;
 
+    /** @ORM\Column(name="date_entry", type="date") */
+    protected $date_entry;
+
 	/** @ORM\Column(type="boolean") */
 	protected $haber;
 
@@ -84,6 +87,11 @@ class Entry
         $this->category = $category;
     }
 
+    public function setDateEntry($date)
+    {
+        $this->date_entry = $date;
+    }
+
     public function setCreatedAt($created_at)
     {
         $this->created_at = $created_at;
@@ -143,6 +151,11 @@ class Entry
     public function getCategory()
     {
         return $this->category;
+    }
+
+    public function getDateEntry()
+    {
+        return $this->date_entry;
     }
 
     public function getCreatedAt()
