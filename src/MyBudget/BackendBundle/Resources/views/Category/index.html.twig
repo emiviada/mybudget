@@ -14,27 +14,33 @@
             </tr>
         </thead>
         <tbody>
-        {% for entity in entities %}
+        {% if entities|length > 0 %}
+            {% for entity in entities %}
+                <tr>
+                    <td>{{ entity.id }}</td>
+                    <td class="w20">{{ entity.name }}</td>
+                    <td class="w15">{% if entity.parent %}{{ entity.parent }}{% else %}-{% endif %}</td>
+                    <td class="w40">{{ entity.description }}</td>
+                    <td class="w25 txtc">
+                        <ul class="list-actions">
+                            <li>
+                                <a href="{{ path('category_show', { 'id': entity.id }) }}" title="Ver categor&iacute;a"><i class="icon-eye-open"></i> Ver</a> &nbsp;
+                            </li>
+                            <li>
+                                <a href="{{ path('category_edit', { 'id': entity.id }) }}" title="Editar categor&iacute;a"><i class="icon-pencil"></i> Editar</a> &nbsp;
+                            </li>
+                            <li>
+                                <a class="delete-confirmation" href="{{ path('category_delete', { 'id': entity.id }) }}" title="Borrar categor&iacute;a"><i class="icon-trash"></i> Borrar</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+        {% else %}
             <tr>
-                <td>{{ entity.id }}</td>
-                <td class="w20">{{ entity.name }}</td>
-                <td class="w15">{{ entity.parent }}</td>
-                <td class="w40">{{ entity.description }}</td>
-                <td class="w25 txtc">
-                    <ul class="list-actions">
-                        <li>
-                            <a href="{{ path('category_show', { 'id': entity.id }) }}" title="Ver categor&iacute;a"><i class="icon-eye-open"></i> Ver</a> &nbsp;
-                        </li>
-                        <li>
-                            <a href="{{ path('category_edit', { 'id': entity.id }) }}" title="Editar categor&iacute;a"><i class="icon-pencil"></i> Editar</a> &nbsp;
-                        </li>
-                        <li>
-                            <a class="delete-confirmation" href="{{ path('category_delete', { 'id': entity.id }) }}" title="Borrar categor&iacute;a"><i class="icon-trash"></i> Borrar</a>
-                        </li>
-                    </ul>
-                </td>
+                <td colspan="7" class="txtc">No existen categorias.</td>
             </tr>
-        {% endfor %}
+        {% endif %}
         </tbody>
     </table>
 

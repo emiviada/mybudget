@@ -11,9 +11,15 @@ class EntryType extends AbstractType
     public function buildForm(FormBuilder $builder, array $options)
     {
         $builder->add('category', null, array('empty_value' => 'Selecciona...'));
-        $builder->add('date_entry');
+        $builder->add('date_entry', 'date', array(
+            'widget' => 'single_text',
+            'format' => 'dd/MM/yyyy',
+            'invalid_message' => 'Formato de fecha no válido.'
+        ));
         $builder->add('haber');
-        $builder->add('value');
+        $builder->add('value', null, array(
+            'invalid_message' => 'Formato no válido.'
+        ));
         $builder->add('comment', 'textarea');
     }
 

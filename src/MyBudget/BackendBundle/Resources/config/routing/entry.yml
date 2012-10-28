@@ -27,4 +27,3 @@ entry_update:
 entry_delete:
     pattern:  /{id}/delete
     defaults: { _controller: "BackendBundle:Entry:delete" }
-    requirements: { _method: post }

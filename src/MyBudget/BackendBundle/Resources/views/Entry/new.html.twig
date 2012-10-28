@@ -18,13 +18,13 @@
 		<!-- Date entry field -->
 	    <div>
 		    {{ form_label(form.date_entry, 'Fecha') }}
-		    {{ form_widget(form.date_entry, { 'attr': { 'class': 'input-xxlarge' } }) }}
+		    {{ form_widget(form.date_entry, { 'attr': { 'class': 'input-medium datepicker-field', 'autocomplete': 'off' } }) }}
 		    {{ form_errors(form.date_entry) }}
 		</div>
 
 		<!-- Haber field -->
-	    <div>
-		    {{ form_label(form.haber, 'Haber') }}
+	    <div class="mbm">
+		    {{ form_label(form.haber, 'Haber', { 'attr': { 'class': 'bck1' } }) }}
 		    {{ form_widget(form.haber, { 'attr': { 'class': 'input-xxlarge' } }) }}
 		    {{ form_errors(form.haber) }}
 		</div>
@@ -32,7 +32,7 @@
 		<!-- Value field -->
 	    <div>
 		    {{ form_label(form.value, 'Valor') }}
-		    {{ form_widget(form.value, { 'attr': { 'class': 'input-xxlarge' } }) }}
+		    {{ form_widget(form.value, { 'attr': { 'class': 'input-medium' } }) }}
 		    {{ form_errors(form.value) }}
 		</div>
 

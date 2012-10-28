@@ -16,37 +16,43 @@
             </tr>
         </thead>
         <tbody>
-        {% for entity in entities %}
+        {% if entities|length > 0 %}
+            {% for entity in entities %}
+                <tr>
+                    <td class="w5">{{ entity.id }}</td>
+                    <td class="w15 txtc">{{ entity.dateEntry|date('d/m/Y') }}</td>
+                    <td class="w10 txtc">
+                        {% if not entity.haber %}
+                            <img src="{{ asset('bundles/backend/images/tick-icon.png')}}" alt="ok" width="24" />
+                         {% endif %}
+                    </td>
+                    <td class="w10 txtc">
+                        {% if entity.haber %}
+                            <img src="{{ asset('bundles/backend/images/tick-icon.png')}}" alt="ok" width="24" />
+                        {% endif %}
+                    </td>
+                    <td class="w20 txtc">{{ entity.category }}</td>
+                    <td class="w15 txtc">${{ entity.value }}</td>
+                    <td class="w25 txtc">
+                        <ul class="list-actions">
+                            <li>
+                                <a href="{{ path('entry_show', { 'id': entity.id }) }}" title="Ver Movimiento"><i class="icon-eye-open"></i> Ver</a> &nbsp;
+                            </li>
+                            <li>
+                                <a href="{{ path('entry_edit', { 'id': entity.id }) }}" title="Editar Movimiento"><i class="icon-pencil"></i> Editar</a> &nbsp;
+                            </li>
+                            <li>
+                                <a class="delete-confirmation" href="{{ path('entry_delete', { 'id': entity.id }) }}" title="Borrar Movimiento"><i class="icon-trash"></i> Borrar</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+        {% else %}
             <tr>
-                <td class="w5">{{ entity.id }}</td>
-                <td class="w15 txtc">{{ entity.dateEntry|date('d/m/Y') }}</td>
-                <td class="w10 txtc">
-                    {% if not entity.haber %}
-                        <img src="{{ asset('bundles/backend/images/tick-icon.png')}}" alt="ok" width="24" />
-                     {% endif %}
-                </td>
-                <td class="w10 txtc">
-                    {% if entity.haber %}
-                        <img src="{{ asset('bundles/backend/images/tick-icon.png')}}" alt="ok" width="24" />
-                    {% endif %}
-                </td>
-                <td class="w20 txtc">{{ entity.category }}</td>
-                <td class="w15 txtc">${{ entity.value }}</td>
-                <td class="w25 txtc">
-                    <ul class="list-actions">
-                        <li>
-                            <a href="{{ path('entry_show', { 'id': entity.id }) }}" title="Ver Movimiento"><i class="icon-eye-open"></i> Ver</a> &nbsp;
-                        </li>
-                        <li>
-                            <a href="{{ path('entry_edit', { 'id': entity.id }) }}" title="Editar Movimiento"><i class="icon-pencil"></i> Editar</a> &nbsp;
-                        </li>
-                        <li>
-                            <a class="delete-confirmation" href="{{ path('entry_delete', { 'id': entity.id }) }}" title="Borrar Movimiento"><i class="icon-trash"></i> Borrar</a>
-                        </li>
-                    </ul>
-                </td>
+                <td colspan="7" class="txtc">No existen movimientos.</td>
             </tr>
-        {% endfor %}
+        {% endif %}
         </tbody>
     </table>
 

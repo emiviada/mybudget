@@ -58,6 +58,7 @@ class EntryController extends Controller
     public function newAction()
     {
         $entity = new Entry();
+        $entity->setDateEntry(new \DateTime());
         $form   = $this->createForm(new EntryType(), $entity);
 
         return $this->render('BackendBundle:Entry:new.html.twig', array(
@@ -157,21 +158,16 @@ class EntryController extends Controller
      */
     public function deleteAction($id)
     {
-        $form = $this->createDeleteForm($id);
-        $request = $this->getRequest();
-
-        $form->bindRequest($request);
-
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getEntityManager();
-            $entity = $em->getRepository('EntryBundle:Entry')->find($id);
-
-            if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Entry entity.');
-            }
-
+        $em = $this->getDoctrine()->getEntityManager();
+        $entity = $em->getRepository('EntryBundle:Entry')->find($id);
+        if ($entity)
+        {
             $em->remove($entity);
             $em->flush();
+        }
+        else
+        {
+            throw $this->createNotFoundException('Unable to find Entry entity.');
         }
 
         return $this->redirect($this->generateUrl('entry'));

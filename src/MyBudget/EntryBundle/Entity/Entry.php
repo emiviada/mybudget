@@ -3,6 +3,7 @@
 namespace MyBudget\EntryBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
@@ -19,16 +20,25 @@ class Entry
 	 */
 	protected $id;
 
-	/** @ORM\ManyToOne(targetEntity="MyBudget\CategoryBundle\Entity\Category") */
+	/** 
+     * @ORM\ManyToOne(targetEntity="MyBudget\CategoryBundle\Entity\Category")
+     * @Assert\NotBlank(message = "Debes elegir una categoría.")
+    */
 	protected $category;
 
-    /** @ORM\Column(name="date_entry", type="date") */
+    /** 
+     * @ORM\Column(name="date_entry", type="date")
+     * @Assert\NotBlank(message = "Debes ingresar una fecha.")
+    */
     protected $date_entry;
 
 	/** @ORM\Column(type="boolean") */
 	protected $haber;
 
-	/** @ORM\Column(type="decimal", precision=10, scale=2) */
+	/** 
+     * @ORM\Column(type="decimal", precision=10, scale=2)
+     * @Assert\NotBlank(message = "Debes ingresar un valor.")
+    */
 	protected $value;
 
 	/** @ORM\Column(type="string", length=500) */
