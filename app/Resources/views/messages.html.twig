@@ -1,0 +1,12 @@
+<div class="messages-stack">
+	{% if app.session.hasFlash('success') %}
+	    <div class="flash-success">
+	        {{ app.session.flash('success') }}
+	    </div>
+	{% endif %}
+	{% if app.session.hasFlash('error') %}
+	    <div class="flash-error">
+	        {{ app.session.flash('error') }}
+	    </div>
+	{% endif %}
+</div>
