@@ -77,13 +77,19 @@ class CategoryController extends Controller
         $form    = $this->createForm(new CategoryType(), $entity);
         $form->bindRequest($request);
 
-        if ($form->isValid()) {
+        if ($form->isValid())
+        {
             $em = $this->getDoctrine()->getEntityManager();
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('category_show', array('id' => $entity->getId())));
-            
+            $this->get('session')->setFlash('success', 'Categoría creada exitosamente.');
+
+            return $this->redirect($this->generateUrl('category_show', array('id' => $entity->getId())));            
+        }
+        else
+        {
+            $this->get('session')->setFlash('error', 'El formulario no se guardo. Hubo errores.');
         }
 
         return $this->render('BackendBundle:Category:new.html.twig', array(
@@ -137,11 +143,18 @@ class CategoryController extends Controller
 
         $editForm->bindRequest($request);
 
-        if ($editForm->isValid()) {
+        if ($editForm->isValid())
+        {
             $em->persist($entity);
             $em->flush();
 
+            $this->get('session')->setFlash('success', 'Categoría editada exitosamente.');
+
             return $this->redirect($this->generateUrl('category_edit', array('id' => $id)));
+        }
+        else
+        {
+            $this->get('session')->setFlash('error', 'El formulario no se edito. Hubo errores.');
         }
 
         return $this->render('BackendBundle:Category:edit.html.twig', array(
@@ -163,6 +176,8 @@ class CategoryController extends Controller
         {
             $em->remove($entity);
             $em->flush();
+
+            $this->get('session')->setFlash('success', 'La Categoría fué borrada exitosamente.');
         }
         else
         {

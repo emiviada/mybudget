@@ -41,7 +41,7 @@ class Entry
     */
 	protected $value;
 
-	/** @ORM\Column(type="string", length=500) */
+	/** @ORM\Column(type="string", length=500, nullable=true) */
 	protected $comment;
 
     /**
