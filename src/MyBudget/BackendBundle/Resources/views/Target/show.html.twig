@@ -1,0 +1,32 @@
+{% extends '::layout.html.twig' %}
+
+{% block body %}
+    <h1 class="mtn mbm">Ver Objetivo Mensual</h1>
+
+    <table class="record_properties table table-striped table-bordered">
+        <tbody>
+            <tr>
+                <th class="w20">Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th class="w20">Mes</th>
+                <td>{{ entity.month|date('F, Y') }}</td>
+            </tr>
+            <tr>
+                <th class="w20">Cantidad</th>
+                <td>${{ entity.amount }}</td>
+            </tr>
+            <tr>
+                <th class="w20">Puntos</th>
+                <td>{{ entity.points }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p>
+        <a class="mrl" href="{{ path('target') }}" title="Volver"><i class="icon-chevron-left"></i>Volver al listado</a>
+        <a class="mrl" href="{{ path('target_edit', { 'id': entity.id }) }}" title="Editar"><i class="icon-pencil"></i> Editar</a>
+        <a class="btn btn-danger delete-confirmation" href="{{ path('target_delete', { 'id': entity.id }) }}" title="Borrar">Borrar</a>
+    </p>
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends '::layout.html.twig' %}
+
+{% block body %}
+    <h1 class="mtn mbm">Objetivos Mensuales</h1>
+
+    <table class="records_list table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th class="txtc">Mes</th>
+                <th class="txtc">Cantidad</th>
+                <th class="txtc">Puntos</th>
+                <th class="txtc">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% if entities|length > 0 %}
+            {% for entity in entities %}
+                <tr>
+                    <td class="w5">{{ entity.id }}</td>
+                    <td class="w25 txtc">{{ entity.month|date('F, Y') }}</td>
+                    <td class="w15 txtc">${{ entity.amount }}</td>
+                    <td class="w20 txtc">{{ entity.points }}</td>
+                    <td class="w25 txtc">
+                        <ul class="list-actions">
+                            <li>
+                                <a href="{{ path('target_show', { 'id': entity.id }) }}" title="Ver Objetivo"><i class="icon-eye-open"></i> Ver</a> &nbsp;
+                            </li>
+                            <li>
+                                <a href="{{ path('target_edit', { 'id': entity.id }) }}" title="Editar Objetivo"><i class="icon-pencil"></i> Editar</a> &nbsp;
+                            </li>
+                            <li>
+                                <a class="delete-confirmation" href="{{ path('target_delete', { 'id': entity.id }) }}" title="Borrar Objetivo"><i class="icon-trash"></i> Borrar</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td colspan="7" class="txtc">No existen objetivos.</td>
+            </tr>
+        {% endif %}
+        </tbody>
+    </table>
+
+    <hr/>
+
+    <a href="{{ path('target_new') }}" class="btn">Agregar Objetivo</a>
+{% endblock %}

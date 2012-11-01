@@ -9,3 +9,7 @@ BackendCategory:
 BackendEntry:
     resource: "@BackendBundle/Resources/config/routing/entry.yml"
     prefix:   /entry
+
+BackendTarget:
+    resource: "@BackendBundle/Resources/config/routing/target.yml"
+    prefix:   /target

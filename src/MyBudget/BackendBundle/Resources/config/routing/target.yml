@@ -1,0 +1,33 @@
+target:
+    pattern:  /
+    defaults: { _controller: "BackendBundle:Target:index" }
+
+target_list:
+    pattern:  /
+    defaults: { _controller: "BackendBundle:Target:index" }
+
+target_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "BackendBundle:Target:show" }
+
+target_new:
+    pattern:  /new
+    defaults: { _controller: "BackendBundle:Target:new" }
+
+target_create:
+    pattern:  /create
+    defaults: { _controller: "BackendBundle:Target:create" }
+    requirements: { _method: post }
+
+target_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "BackendBundle:Target:edit" }
+
+target_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "BackendBundle:Target:update" }
+    requirements: { _method: post }
+
+target_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "BackendBundle:Target:delete" }

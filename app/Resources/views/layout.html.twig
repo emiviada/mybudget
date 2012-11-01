@@ -27,6 +27,7 @@
                             <ul class="nav">
                                 <li {% if(app.request.attributes.get('_route') == 'category') %}class="active"{% endif %}><a href="{{ path('category_list') }}">Categor&iacute;as</a></li>
                                 <li {% if(app.request.attributes.get('_route') == 'entry') %}class="active"{% endif %}><a href="{{ path('entry_list') }}">Movimientos</a></li>
+                                <li {% if(app.request.attributes.get('_route') == 'target') %}class="active"{% endif %}><a href="{{ path('target_list') }}">Objetivos mensuales</a></li>
                                 <li><a href="{{ path('logout') }}">Cerrar Sesi&oacute;n</a></li>
                             </ul>
                         </nav>

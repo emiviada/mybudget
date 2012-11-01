@@ -1,0 +1,38 @@
+{% extends '::layout.html.twig' %}
+
+{% block body %}
+	<h1 class="mtn mbm">Agregar Objetivo Mensual</h1>
+
+	{% form_theme form 'BackendBundle:Form:fields_errors.html.twig' %}
+
+	<form action="{{ path('target_create') }}" method="post" {{ form_enctype(form) }} novalidate>
+	    {{ form_errors(form) }}
+
+	    <!-- Month field -->
+	    <div>
+		    {{ form_label(form.month, 'Mes') }}
+		    {{ form_widget(form.month, { 'attr': { 'class': 'target-month' } }) }}
+		    {{ form_errors(form.month) }}
+		</div>
+
+		<!-- Amount field -->
+	    <div>
+		    {{ form_label(form.amount, 'Cantidad') }}
+		    {{ form_widget(form.amount, { 'attr': { 'class': 'input-medium' } }) }}
+		    {{ form_errors(form.amount) }}
+		</div>
+
+		<!-- Points field -->
+	    <div>
+		    {{ form_label(form.points, 'Puntos') }}
+		    {{ form_widget(form.points, { 'attr': { 'class': 'input-medium' } }) }}
+		    {{ form_errors(form.points) }}
+		</div>
+	
+		{{ form_rest(form) }}
+		<p>
+	        <a class="mrl" href="{{ path('target') }}" title="Volver"><i class="icon-chevron-left"></i>Volver al listado</a>
+	        <button class="btn btn-success" type="submit">Agregar</button>
+	    </p>
+    </form>
+{% endblock %}
