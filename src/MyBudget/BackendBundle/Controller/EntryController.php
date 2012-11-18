@@ -85,6 +85,7 @@ class EntryController extends Controller
             $em->flush();
 
             $this->get('session')->setFlash('success', 'Movimiento creado exitosamente.');
+            $this->get('session')->setFlash('add_another', true);
 
             return $this->redirect($this->generateUrl('entry_show', array('id' => $entity->getId())));           
         }

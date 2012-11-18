@@ -84,6 +84,7 @@ class CategoryController extends Controller
             $em->flush();
 
             $this->get('session')->setFlash('success', 'Categoría creada exitosamente.');
+            $this->get('session')->setFlash('add_another', true);
 
             return $this->redirect($this->generateUrl('category_show', array('id' => $entity->getId())));            
         }

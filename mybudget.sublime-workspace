@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"Categ",
+				"CategoryBundle"
+			],
+			[
+				"de",
+				"debug"
+			],
+			[
 				"sans",
 				"sans-serif"
 			],
@@ -23,19 +31,87 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "app/config/routing.yml",
+			"settings":
+			{
+				"buffer_size": 781,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/MyBudget/EntryBundle/Controller/DefaultController.php",
+			"settings":
+			{
+				"buffer_size": 319,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/MyBudget/BackendBundle/Controller/DefaultController.php",
+			"settings":
+			{
+				"buffer_size": 282,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/MyBudget/BackendBundle/Resources/views/Default/index.html.twig",
+			"settings":
+			{
+				"buffer_size": 249,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/Resources/views/layout.html.twig",
+			"settings":
+			{
+				"buffer_size": 439,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/MyBudget/BackendBundle/Resources/config/routing/category.yml",
+			"settings":
+			{
+				"buffer_size": 813,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/MyBudget/BackendBundle/Resources/config/routing/entry.yml",
+			"settings":
+			{
+				"buffer_size": 771,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/MyBudget/BackendBundle/Form/EntryType.php",
+			"settings":
+			{
+				"buffer_size": 475,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 0.0,
+		"height": 267.0,
 		"selected_items":
 		[
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			]
 		],
-		"width": 0.0
+		"width": 449.0
 	},
 	"console":
 	{
-		"height": 0.0
+		"height": 125.0
 	},
 	"distraction_free":
 	{
@@ -48,6 +124,34 @@
 	},
 	"file_history":
 	[
+		"/Library/WebServer/Documents/mybudget/src/MyBudget/CategoryBundle/Controller/CategoryController.php",
+		"/Library/WebServer/Documents/mybudget/src/MyBudget/CategoryBundle/Form/CategoryType.php",
+		"/Library/WebServer/Documents/mybudget/src/MyBudget/CategoryBundle/Resources/config/routing/category.yml",
+		"/Library/WebServer/Documents/mybudget/src/MyBudget/BackendBundle/Controller/CategoryController.php",
+		"/Library/WebServer/Documents/mybudget/src/MyBudget/BackendBundle/Form/CategoryType.php",
+		"/Library/WebServer/Documents/mybudget/src/MyBudget/BackendBundle/Resources/config/routing.yml",
+		"/Library/WebServer/Documents/mybudget/src/MyBudget/BackendBundle/Resources/config/routing/category.yml",
+		"/Library/WebServer/Documents/mybudget/src/MyBudget/BackendBundle/Controller/EntryController.php",
+		"/Library/WebServer/Documents/mybudget/src/MyBudget/BackendBundle/Form/EntryType.php",
+		"/Library/WebServer/Documents/mybudget/app/AppKernel.php",
+		"/Library/WebServer/Documents/mybudget/src/MyBudget/BackendBundle/Resources/views/Category/edit.html.twig",
+		"/Library/WebServer/Documents/mybudget/app/config/parameters.ini",
+		"/Library/WebServer/Documents/mybudget/src/MyBudget/CategoryBundle/Entity/Category.php",
+		"/Library/WebServer/Documents/mybudget/src/MyBudget/EntryBundle/Entity/Entry.php",
+		"/Library/WebServer/Documents/mybudget/app/config/config.yml",
+		"/Library/WebServer/Documents/mybudget/app/config/routing.yml",
+		"/Library/WebServer/Documents/mybudget/src/MyBudget/EntryBundle/Controller/DefaultController.php",
+		"/Library/WebServer/Documents/mybudget/src/MyBudget/EntryBundle/Resources/views/Default/index.html.twig",
+		"/Library/WebServer/Documents/mybudget/app/Resources/views/layout.html.twig",
+		"/Users/home/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/Library/WebServer/Documents/mybudget/app/Resources/views/base.html.twig",
+		"/Library/WebServer/Documents/mybudget/src/MyBudget/UserBundle/Resources/views/Security/login.html.twig",
+		"/Library/WebServer/Documents/mybudget/src/MyBudget/UserBundle/Controller/SecurityController.php",
+		"/Library/WebServer/Documents/mybudget/app/config/security.yml",
+		"/Library/WebServer/Documents/mybudget/src/MyBudget/UserBundle/Controller/DefaultController.php",
+		"/Library/WebServer/Documents/mybudget/web/app_dev.php",
+		"/Library/WebServer/Documents/mybudget/web/app.php",
+		"/Library/WebServer/Documents/mybudget/app/config/routing_dev.yml",
 		"/Library/WebServer/Documents/cupon2/src/Cupon/UsuarioBundle/Resources/config/routing.yml",
 		"/Library/WebServer/Documents/cupon2/src/Cupon/UsuarioBundle/Controller/DefaultController.php",
 		"/Users/home/Desktop/icons/todo.html",
@@ -139,8 +243,227 @@
 	"groups":
 	[
 		{
+			"selected": 7,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "app/config/routing.yml",
+					"settings":
+					{
+						"buffer_size": 781,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								239,
+								239
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/YAML/YAML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/MyBudget/EntryBundle/Controller/DefaultController.php",
+					"settings":
+					{
+						"buffer_size": 319,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								316,
+								206
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/MyBudget/BackendBundle/Controller/DefaultController.php",
+					"settings":
+					{
+						"buffer_size": 282,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								273,
+								273
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "src/MyBudget/BackendBundle/Resources/views/Default/index.html.twig",
+					"settings":
+					{
+						"buffer_size": 249,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								222,
+								222
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "app/Resources/views/layout.html.twig",
+					"settings":
+					{
+						"buffer_size": 439,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								278,
+								333
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "src/MyBudget/BackendBundle/Resources/config/routing/category.yml",
+					"settings":
+					{
+						"buffer_size": 813,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/YAML/YAML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "src/MyBudget/BackendBundle/Resources/config/routing/entry.yml",
+					"settings":
+					{
+						"buffer_size": 771,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								712,
+								712
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/YAML/YAML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "src/MyBudget/BackendBundle/Form/EntryType.php",
+					"settings":
+					{
+						"buffer_size": 475,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								33,
+								33
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],

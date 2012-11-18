@@ -81,6 +81,7 @@ class TargetController extends Controller
             $em->flush();
 
             $this->get('session')->setFlash('success', 'Objetivo creado exitosamente.');
+            $this->get('session')->setFlash('add_another', true);
 
             return $this->redirect($this->generateUrl('target_show', array('id' => $entity->getId())));           
         }
