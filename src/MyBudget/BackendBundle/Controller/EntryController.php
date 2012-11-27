@@ -75,8 +75,9 @@ class EntryController extends Controller
     {
         $entity  = new Entry();
         $request = $this->getRequest();
+        $session = $this->get('session');
         $form    = $this->createForm(new EntryType(), $entity);
-        $form->bindRequest($request);
+        $form->bind($request);
 
         if ($form->isValid())
         {
@@ -84,14 +85,14 @@ class EntryController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            $this->get('session')->setFlash('success', 'Movimiento creado exitosamente.');
-            $this->get('session')->setFlash('add_another', true);
+            $session->getFlashBag()->add('success', 'Movimiento creado exitosamente.');
+            $session->getFlashBag()->add('add_another', true);
 
             return $this->redirect($this->generateUrl('entry_show', array('id' => $entity->getId())));           
         }
         else
         {
-            $this->get('session')->setFlash('error', 'El formulario no se guardo. Hubo errores.');
+            $session->getFlashBag()->add('error', 'El formulario no se guardo. Hubo errores.');
         }
 
         return $this->render('BackendBundle:Entry:new.html.twig', array(
@@ -131,6 +132,7 @@ class EntryController extends Controller
     public function updateAction($id)
     {
         $em = $this->getDoctrine()->getEntityManager();
+        $session = $this->get('session');
 
         $entity = $em->getRepository('EntryBundle:Entry')->find($id);
 
@@ -150,13 +152,13 @@ class EntryController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            $this->get('session')->setFlash('success', 'Movimiento editado exitosamente.');
+            $session->getFlashBag()->add('success', 'Movimiento editado exitosamente.');
 
             return $this->redirect($this->generateUrl('entry_edit', array('id' => $id)));
         }
         else
         {
-            $this->get('session')->setFlash('error', 'El formulario no se edito. Hubo errores.');
+            $session->getFlashBag()->add('error', 'El formulario no se edito. Hubo errores.');
         }
 
         return $this->render('BackendBundle:Entry:edit.html.twig', array(
@@ -179,7 +181,7 @@ class EntryController extends Controller
             $em->remove($entity);
             $em->flush();
 
-            $this->get('session')->setFlash('success', 'El Movimiento fué borrado exitosamente.');
+            $this->get('session')->getFlashBag()->add('success', 'El Movimiento fué borrado exitosamente.');
         }
         else
         {

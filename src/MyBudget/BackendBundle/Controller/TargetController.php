@@ -71,6 +71,7 @@ class TargetController extends Controller
     {
         $entity  = new Target();
         $request = $this->getRequest();
+        $session = $this->get('session');
         $form    = $this->createForm(new TargetType(), $entity);
         $form->bindRequest($request);
 
@@ -80,14 +81,14 @@ class TargetController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            $this->get('session')->setFlash('success', 'Objetivo creado exitosamente.');
-            $this->get('session')->setFlash('add_another', true);
+            $session->getFlashBag()->add('success', 'Objetivo creado exitosamente.');
+            $session->getFlashBag()->add('add_another', true);
 
             return $this->redirect($this->generateUrl('target_show', array('id' => $entity->getId())));           
         }
         else
         {
-            $this->get('session')->setFlash('error', 'El formulario no se guardo. Hubo errores.');
+            $session->getFlashBag()->add('error', 'El formulario no se guardo. Hubo errores.');
         }
 
         return $this->render('BackendBundle:Target:new.html.twig', array(
@@ -125,6 +126,7 @@ class TargetController extends Controller
     public function updateAction($id)
     {
         $em = $this->getDoctrine()->getEntityManager();
+        $session = $this->get('session');
 
         $entity = $em->getRepository('BackendBundle:Target')->find($id);
 
@@ -142,13 +144,13 @@ class TargetController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            $this->get('session')->setFlash('success', 'Objetivo editado exitosamente.');
+            $session->getFlashBag()->add('success', 'Objetivo editado exitosamente.');
 
             return $this->redirect($this->generateUrl('target_edit', array('id' => $id)));
         }
         else
         {
-            $this->get('session')->setFlash('error', 'El formulario no se edito. Hubo errores.');
+            $session->getFlashBag()->add('error', 'El formulario no se edito. Hubo errores.');
         }
 
         return $this->render('BackendBundle:Target:edit.html.twig', array(
@@ -170,7 +172,7 @@ class TargetController extends Controller
             $em->remove($entity);
             $em->flush();
 
-            $this->get('session')->setFlash('success', 'El Objetivo fué borrado exitosamente.');
+            $this->get('session')->getFlashBag()->add('success', 'El Objetivo fué borrado exitosamente.');
         }
         else
         {

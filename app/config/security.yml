@@ -30,5 +30,6 @@ security:
 
     providers:
         in_memory:
-            users:
-                emi: { password: 24747a70468d645b6245ca2a852984dfefccfd8b, roles: [ 'ROLE_ADMIN' ] }
+            memory:
+                users:
+                    emi: { password: 24747a70468d645b6245ca2a852984dfefccfd8b, roles: [ 'ROLE_ADMIN' ] }
