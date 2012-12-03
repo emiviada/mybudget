@@ -32,7 +32,7 @@
                         {% endif %}
                     </td>
                     <td class="w20 txtc">{{ entity.category }}</td>
-                    <td class="w15 txtc">${{ entity.value }}</td>
+                    <td class="w15 txtc">{{ entity.value | price('2', app.request.locale) }}</td>
                     <td class="w25 txtc">
                         <ul class="list-actions">
                             <li>

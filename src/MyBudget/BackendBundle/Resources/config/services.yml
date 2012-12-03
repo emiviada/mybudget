@@ -2,6 +2,7 @@ parameters:
 #    backend.example.class: MyBudget\BackendBundle\Example
 
 services:
-#    backend.example:
-#        class: %backend.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+    mybudget.twig.locale_extension:
+        class: MyBudget\BackendBundle\Twig\LocaleExtension
+        tags:
+            - { name: twig.extension }

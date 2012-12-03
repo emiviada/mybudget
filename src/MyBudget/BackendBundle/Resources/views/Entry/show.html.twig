@@ -27,7 +27,7 @@
             </tr>
             <tr>
                 <th class="w20">Valor</th>
-                <td>${{ entity.value }}</td>
+                <td>{{ entity.value | price('2', app.request.locale) }}</td>
             </tr>
             <tr>
                 <th class="w20">Comentario</th>

@@ -1,5 +1,17 @@
 {% extends '::layout.html.twig' %}
 
 {% block body %}
+    
     <h1>My Budget Dashboard</h1>
+
+    <div class="dashboard-item">
+    	<h3>Balance</h3>
+    	<p>
+    		<strong>Per&iacute;odo: </strong>
+    		Desde el {{ since | localeDate('full', 'none', app.request.locale) }} al
+    		{{ until | localeDate('full', 'none', app.request.locale) }}.
+    	</p>
+    	<p><strong>Saldo:</strong> <span class="highlight {{ balance_class }}">{{ balance | price('2', app.request.locale) }}</span></p>
+    </div>
+
 {% endblock %}
