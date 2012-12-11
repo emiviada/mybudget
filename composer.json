@@ -18,7 +18,8 @@
         "sensio/generator-bundle": "2.1.*",
         "jms/security-extra-bundle": "1.2.*",
         "jms/di-extra-bundle": "1.1.*",
-        "gedmo/doctrine-extensions": "dev-master"
+        "gedmo/doctrine-extensions": "dev-master",
+        "ob/highcharts-bundle": "dev-master"
     },
     "scripts": {
         "post-install-cmd": [
@@ -38,5 +39,11 @@
     "extra": {
         "symfony-app-dir": "app",
         "symfony-web-dir": "web"
-    }
+    },
+    "repositories": [
+       {
+           "type":"composer",
+           "url":"http://packages.zendframework.com/"
+       }
+   ]
 }

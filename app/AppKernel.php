@@ -23,6 +23,7 @@ class AppKernel extends Kernel
             new MyBudget\UserBundle\UserBundle(),
             new MyBudget\CategoryBundle\CategoryBundle(),
             new MyBudget\BackendBundle\BackendBundle(),
+            new Ob\HighchartsBundle\ObHighchartsBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
