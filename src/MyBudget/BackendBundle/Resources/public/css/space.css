@@ -1,0 +1,30 @@
+/*
+ * Spaces StyleSheet (CSS)
+ */
+/**** Margins ****/
+.mtbl {
+	margin-top: 50px;
+}
+.mtl {
+	margin-top: 20px;
+}
+.mbn {
+	margin-bottom: 10px;
+}
+.mbl {
+	margin-bottom: 20px;
+}
+
+/**** Paddings ****/
+.ptl {
+	padding-top: 20px !important;
+}
+.pbs {
+	padding-top: 5px;
+}
+.pln {
+	padding-left: 10px;
+}
+.prn {
+	padding-right: 10px;
+}
