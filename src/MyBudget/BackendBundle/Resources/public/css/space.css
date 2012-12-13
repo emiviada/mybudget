@@ -8,11 +8,15 @@
 .mtl {
 	margin-top: 20px;
 }
-.mbn {
+.mbn,
+.mbm {
 	margin-bottom: 10px;
 }
 .mbl {
 	margin-bottom: 20px;
+}
+.mrl {
+	margin-right: 20px;
 }
 
 /**** Paddings ****/

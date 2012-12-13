@@ -42,12 +42,8 @@ class CategoryController extends Controller
             throw $this->createNotFoundException('Unable to find Category entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
-
         return $this->render('BackendBundle:Category:show.html.twig', array(
             'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),
-
         ));
     }
 

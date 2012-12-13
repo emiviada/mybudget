@@ -2,7 +2,62 @@
  * MyBudget StyleSheet (CSS)
  */
 /**** Global ****/
+img.ui-datepicker-trigger {
+	margin: -8px 0 0 5px;
+	cursor: pointer;
+}
 
+/**** Widths ****/
+.w15 {
+	width: 15%;
+}
+.w20 {
+	width: 20%;
+}
+.w25 {
+	width: 25%;
+}
+.w40 {
+	width: 40%;
+}
+
+/**** Heights ****/
+.h75p {
+	height: 75px;
+}
+
+/**** Text ****/
+.txtc {
+	text-align: center !important;
+}
+
+/**** Flash messages ****/
+.messages-stack {
+	width: 940px;
+	margin: 0 auto;
+}
+.messages-stack .flash-error {
+	width: 920px;
+	background-color: #ffe3e3;
+	border: 1px solid #d00;
+	padding: 5px 10px;
+	color: #a00;
+	-moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    border-radius: 5px;
+}
+.messages-stack .flash-success {
+	width: 920px;
+	background-color: #dfffdf;
+	border: 1px solid #9fcf9f;
+	padding: 5px 10px;
+	color: #005f00;
+	-moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    border-radius: 5px;
+}
 
 /**** Login ****/
 .form-horizontal {
@@ -34,4 +89,18 @@
 }
 .highlight.negative {
 	color: #ff3333;
+}
+
+/**** Lists ****/
+ul.list-actions {
+	list-style-type: none;
+}
+ul.error_list {
+	list-style-type: none;
+	margin: 0;
+	color: #d00;
+	margin: -6px 0 10px;
+}
+ul.list-actions li {
+	display: inline;
 }
