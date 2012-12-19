@@ -30,6 +30,36 @@ class EntryRepository extends EntityRepository
 	}
 
 	/*
+	 * getFromTo() method
+	 * @desc Returns all the entries from $from to $to
+	 * @params DateTime $from, DateTime $to
+	 * @return array collection $entries
+	 */
+	public function getFromTo(\DateTime $from = null, \DateTime $to = null)
+	{
+		$q = $this->createQueryBuilder('e');
+		
+		if (!is_null($from))
+			$q->where('e.date_entry >= :from');
+
+		if (!is_null($to) && !is_null($from))
+			$q->andWhere('e.date_entry <= :to');
+		elseif (!is_null($to) && is_null($from))
+			$q->where('e.date_entry <= :to');
+
+		$q->setParameters(array(
+			'from' => $from,
+			'to' => $to
+		));
+
+		$q = $q->getQuery();
+            
+        $entries = $q->getResult();
+
+        return (count($entries))? $entries : null;
+	}
+
+	/*
 	 * getOldest() method
 	 * @desc Returns the oldest Entry object
 	 * @param

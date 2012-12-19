@@ -4,7 +4,7 @@
     
     <h1 class="mbl">My Budget Dashboard</h1>
 
-    <div class="dashboard-item-2 mbn pln prn">
+    <div class="dashboard-item-2 mbn pln prn mrl">
     	<h3>Balance</h3>
     	<p>
     		<strong>Per&iacute;odo: </strong>
@@ -12,6 +12,13 @@
     		{{ until | localeDate('full', 'none', app.request.locale) }}.
     	</p>
     	<p><strong>Saldo:</strong> <span class="highlight {{ balance_class }}">{{ balance | price('2', app.request.locale) }}</span></p>
+    </div>
+
+    <div class="dashboard-item-2 pln prn mbn">
+        <h3>{{ today | localeDate('full', 'none', app.request.locale, 'MMMM Y') | capitalize }}</h3>
+        <p><strong>Ingresos:</strong> <span class="positive">{{ ing | price('2', app.request.locale) }}</span></p>
+        <p><strong>Gastos:</strong> <span class="negative">{{ out | price('2', app.request.locale) }}</span></p>
+        <p><strong>Objetivo:</strong> N/A</p>
     </div>
 
     <div id="linechart" style="min-width: 400px; height: 400px; margin: 0 auto"></div>

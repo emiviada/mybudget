@@ -73,6 +73,7 @@ img.ui-datepicker-trigger {
 
 /**** Dashboard ****/
 .dashboard-item-2 {
+	float: left;
 	width: 430px;
 	background-color: whitesmoke;
 	border: 1px solid #ddd;
@@ -80,14 +81,15 @@ img.ui-datepicker-trigger {
     -webkit-border-radius: 5px;
     -khtml-border-radius: 5px;
     border-radius: 5px;
+    display: inline-block;
 }
 .highlight {
 	font-size: 20px;
 }
-.highlight.positive {
+.positive {
 	color: #66cc66;
 }
-.highlight.negative {
+.negative {
 	color: #ff3333;
 }
 

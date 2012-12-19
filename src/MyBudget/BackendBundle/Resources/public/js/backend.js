@@ -12,7 +12,7 @@
 			 * This is executed First of all.
 			 */
 			init : function() {
-				var datepicker_field = $('.datepicker-field'),
+				/*var datepicker_field = $('.datepicker-field'),
                     myDate,
                     input_value,
                     formatted;
@@ -28,7 +28,29 @@
                     buttonImageOnly: true,
                     dateFormat: "dd/mm/yy",
                     defaultDate: myDate
+                });*/
+
+                var datepicker_fields = $('.datepicker-field'),
+                    myDate,
+                    input_value,
+                    formatted;
+
+                $.each (datepicker_fields, function(i, field) {
+                    //Set default date if we're editing
+                    field = $(field);
+                    input_value = field.val();
+                    formatted = input_value.substring(6, 10) + '/' + input_value.substring(3, 5) + '/' + input_value.substring(0, 2);
+                    myDate = new Date(formatted);
+
+                    field.datepicker({
+                        showOn: "button",
+                        buttonImage: "/bundles/backend/images/calendar-icon.jpg",
+                        buttonImageOnly: true,
+                        dateFormat: "dd/mm/yy",
+                        defaultDate: myDate
+                    });
                 });
+
 			},
 
 			/*
