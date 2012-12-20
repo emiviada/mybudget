@@ -1,0 +1,10 @@
+{% use '::javascript.html.twig' %}
+
+<div id="linechart" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        {{ chart(chart) }}
+    </script>
+{% endblock %}
