@@ -3,7 +3,7 @@
 {% block body %}
     <h1 class="mtn mbm">Objetivos Mensuales</h1>
 
-    <table class="records_list table table-striped">
+    <table class="records_list table table-striped mbm">
         <thead>
             <tr>
                 <th>Id</th>
@@ -44,7 +44,7 @@
         </tbody>
     </table>
 
-    <hr/>
+    {% include 'BackendBundle:Default:paginator.html.twig' %}
 
     <a href="{{ path('target_new') }}" class="btn">Agregar Objetivo</a>
 {% endblock %}

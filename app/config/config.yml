@@ -2,6 +2,7 @@ imports:
     - { resource: parameters.ini }
     - { resource: security.yml }
     - { resource: doctrine_extensions.yml }
+    - { resource: "@BackendBundle/Resources/config/config.yml" }
 
 framework:
     #esi:             ~

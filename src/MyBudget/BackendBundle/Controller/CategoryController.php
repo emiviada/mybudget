@@ -3,9 +3,9 @@
 namespace MyBudget\BackendBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
 use MyBudget\CategoryBundle\Entity\Category;
 use MyBudget\BackendBundle\Form\CategoryType;
+use MyBudget\BackendBundle\Util\Paginator;
 
 /**
  * Category controller.
@@ -17,14 +17,26 @@ class CategoryController extends Controller
      * Lists all Category entities.
      *
      */
-    public function indexAction()
+    public function indexAction($page = 1)
     {
         $em = $this->getDoctrine()->getEntityManager();
+        $request = $this->get('request');
+        $items_per_list = $this->container->getParameter('items_per_list');
 
-        $entities = $em->getRepository('CategoryBundle:Category')->findAll();
+        $all = $em->getRepository('CategoryBundle:Category')->findAll();
+
+        $paginator = Paginator::getInfo(count($all), $items_per_list, $page, 'category_page');
+
+        $entities = $em->getRepository('CategoryBundle:Category')->findBy(
+            array(), //Criteria (Filtering)
+            array(), //OrderBy (Sortering)
+            $paginator['per_page'],
+            $paginator['offset']
+        );
 
         return $this->render('BackendBundle:Category:index.html.twig', array(
-            'entities' => $entities
+            'entities' => $entities,
+            'paginator' => $paginator
         ));
     }
 

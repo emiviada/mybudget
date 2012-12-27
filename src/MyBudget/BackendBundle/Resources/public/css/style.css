@@ -6,6 +6,13 @@ img.ui-datepicker-trigger {
 	margin: -8px 0 0 5px;
 	cursor: pointer;
 }
+a {
+	color: #777;
+}
+a:hover {
+	color: #aaa;
+	text-decoration: none;
+}
 
 /**** Widths ****/
 .w15 {
@@ -94,15 +101,36 @@ img.ui-datepicker-trigger {
 }
 
 /**** Lists ****/
-ul.list-actions {
+ul {
 	list-style-type: none;
 }
 ul.error_list {
-	list-style-type: none;
 	margin: 0;
 	color: #d00;
 	margin: -6px 0 10px;
 }
 ul.list-actions li {
 	display: inline;
+}
+
+/**** Pagination ****/
+.paginator {
+	border-top: 1px solid #eee;
+	border-bottom: 1px solid #eee;
+	padding: 10px;
+}
+.paginator span {
+	font-weight: bold;
+}
+.paginator nav {
+	display: inline;
+	float: right;
+}
+.paginator li {
+	display: inline;
+	margin: 0 5px;
+}
+.paginator li.active {
+	color: #ddd;
+	font-weight: 700;
 }

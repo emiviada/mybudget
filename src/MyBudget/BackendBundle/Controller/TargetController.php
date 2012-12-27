@@ -3,9 +3,9 @@
 namespace MyBudget\BackendBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
 use MyBudget\BackendBundle\Entity\Target;
 use MyBudget\BackendBundle\Form\TargetType;
+use MyBudget\BackendBundle\Util\Paginator;
 
 /**
  * Target controller.
@@ -17,14 +17,26 @@ class TargetController extends Controller
      * Lists all Target entities.
      *
      */
-    public function indexAction()
+    public function indexAction($page = 1)
     {
         $em = $this->getDoctrine()->getEntityManager();
+        $request = $this->get('request');
+        $items_per_list = $this->container->getParameter('items_per_list');
 
-        $entities = $em->getRepository('BackendBundle:Target')->findAll();
+        $all = $em->getRepository('BackendBundle:Target')->findAll();
+
+        $paginator = Paginator::getInfo(count($all), $items_per_list, $page, 'target_page');
+
+        $entities = $em->getRepository('BackendBundle:Target')->findBy(
+            array(), //Criteria (Filtering)
+            array(), //OrderBy (Sortering)
+            $paginator['per_page'],
+            $paginator['offset']
+        );
 
         return $this->render('BackendBundle:Target:index.html.twig', array(
-            'entities' => $entities
+            'entities' => $entities,
+            'paginator' => $paginator
         ));
     }
 

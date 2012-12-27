@@ -2,6 +2,10 @@ target:
     pattern:  /
     defaults: { _controller: "BackendBundle:Target:index" }
 
+target_page:
+    pattern:  /page/{page}
+    defaults: { _controller: "BackendBundle:Target:index", page: 1 }
+
 target_list:
     pattern:  /
     defaults: { _controller: "BackendBundle:Target:index" }

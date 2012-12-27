@@ -2,6 +2,10 @@ category:
     pattern:  /
     defaults: { _controller: "BackendBundle:Category:index" }
 
+category_page:
+    pattern:  /page/{page}
+    defaults: { _controller: "BackendBundle:Category:index", page: 1 }
+
 category_show:
     pattern:  /{id}/show
     defaults: { _controller: "BackendBundle:Category:show" }

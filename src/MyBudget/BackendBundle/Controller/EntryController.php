@@ -3,9 +3,9 @@
 namespace MyBudget\BackendBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
 use MyBudget\EntryBundle\Entity\Entry;
 use MyBudget\BackendBundle\Form\EntryType;
+use MyBudget\BackendBundle\Util\Paginator;
 
 /**
  * Entry controller.
@@ -17,14 +17,26 @@ class EntryController extends Controller
      * Lists all Entry entities.
      *
      */
-    public function indexAction()
+    public function indexAction($page = 1)
     {
         $em = $this->getDoctrine()->getEntityManager();
+        $request = $this->get('request');
+        $items_per_list = $this->container->getParameter('items_per_list');
 
-        $entities = $em->getRepository('EntryBundle:Entry')->findAll();
+        $all = $em->getRepository('EntryBundle:Entry')->findAll();
+
+        $paginator = Paginator::getInfo(count($all), $items_per_list, $page, 'entry_page');
+
+        $entities = $em->getRepository('EntryBundle:Entry')->findBy(
+            array(), //Criteria (Filtering)
+            array(), //OrderBy (Sortering)
+            $paginator['per_page'],
+            $paginator['offset']
+        );
 
         return $this->render('BackendBundle:Entry:index.html.twig', array(
-            'entities' => $entities
+            'entities' => $entities,
+            'paginator' => $paginator
         ));
     }
 
