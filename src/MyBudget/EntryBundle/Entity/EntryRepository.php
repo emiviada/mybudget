@@ -38,19 +38,23 @@ class EntryRepository extends EntityRepository
 	public function getFromTo(\DateTime $from = null, \DateTime $to = null)
 	{
 		$q = $this->createQueryBuilder('e');
+		$parameters = array();
 		
-		if (!is_null($from))
+		if (!is_null($from)) {
 			$q->where('e.date_entry >= :from');
+			$parameters['from'] = $from;
+		}
 
-		if (!is_null($to) && !is_null($from))
+		if (!is_null($to) && !is_null($from)) {
 			$q->andWhere('e.date_entry <= :to');
-		elseif (!is_null($to) && is_null($from))
+			$parameters['to'] = $to;
+		} elseif (!is_null($to) && is_null($from)) {
 			$q->where('e.date_entry <= :to');
+			$parameters['to'] = $to;
+		}
 
-		$q->setParameters(array(
-			'from' => $from,
-			'to' => $to
-		));
+		$q->orderBy('e.date_entry', 'ASC');
+		$q->setParameters($parameters);
 
 		$q = $q->getQuery();
             

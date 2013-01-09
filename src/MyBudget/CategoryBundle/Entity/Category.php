@@ -293,4 +293,23 @@ class Category
     {
         return $this->children;
     }
+
+    /*
+     * toArray() method
+     * Converts the object into an array
+     */
+    public function toArray()
+    {
+        $array = array();
+
+        $array['id'] = $this->id;
+        $array['name'] = $this->name;
+        $array['description'] = $this->description;
+        $array['parent'] = $this->parent;
+        $array['slug'] = $this->slug;
+        $array['created_at'] = $this->created_at;
+        $array['updated_at'] = $this->updated_at;
+
+        return $array;
+    }
 }

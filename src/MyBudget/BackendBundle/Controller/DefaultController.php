@@ -23,18 +23,24 @@ class DefaultController extends Controller
         $balance_class = ($balance < 0)? 'negative' : 'positive';
 
         $today = new \DateTime();
+        $aux = new \DateTime();
+        $prevMonth = $aux->modify('-1 month');
         $entries = $entryRepository->getFromTo(
-            new \DateTime($today->format('Y-m-01')),
+            new \DateTime($prevMonth->format('Y-m-01')),
             new \DateTime($today->format('Y-m-t'))
         );
         
-        $ing = $out = 0;
+        $ing = $out = array(
+            'current' => 0,
+            'previous' => 0,
+        );
         if (count($entries)) {
             foreach ($entries as $entry) {
+                $key = ($entry->getDateEntry()->format('m') == $today->format('m'))? 'current' : 'previous';
                 if ($entry->getHaber())
-                    $ing += $entry->getValue();
+                    $ing[$key] += $entry->getValue();
                 else
-                    $out += $entry->getValue();
+                    $out[$key] += $entry->getValue();
             }
         }
         
@@ -44,6 +50,7 @@ class DefaultController extends Controller
         	'balance' => $balance,
             'balance_class' => $balance_class,
             'today' => $today,
+            'prevMonth' => $prevMonth,
             'ing' => $ing,
             'out' => $out
     	));

@@ -90,6 +90,17 @@ a:hover {
     border-radius: 5px;
     display: inline-block;
 }
+.dashboard-item-4 {
+	float: left;
+	width: 200px;
+	background-color: whitesmoke;
+	border: 1px solid #ddd;
+	-moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    border-radius: 5px;
+    display: inline-block;
+}
 .highlight {
 	font-size: 20px;
 }
@@ -98,6 +109,9 @@ a:hover {
 }
 .negative {
 	color: #ff3333;
+}
+.shortcut {
+	border-bottom: 1px solid #ccc;
 }
 
 /**** Lists ****/
@@ -133,4 +147,11 @@ ul.list-actions li {
 .paginator li.active {
 	color: #ddd;
 	font-weight: 700;
+}
+
+/**** Charts ****/
+.twelve-months {
+	min-width: 400px;
+	height: 400px;
+	margin: 0 auto;
 }

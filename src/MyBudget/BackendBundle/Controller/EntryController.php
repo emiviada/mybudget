@@ -29,7 +29,7 @@ class EntryController extends Controller
 
         $entities = $em->getRepository('EntryBundle:Entry')->findBy(
             array(), //Criteria (Filtering)
-            array(), //OrderBy (Sortering)
+            array('date_entry' => 'desc'), //OrderBy (Sortering)
             $paginator['per_page'],
             $paginator['offset']
         );

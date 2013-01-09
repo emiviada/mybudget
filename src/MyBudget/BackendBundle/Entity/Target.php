@@ -33,7 +33,7 @@ class Target
 	protected $amount;
 
     /** 
-     * @ORM\Column(type="decimal", precision=5, scale=2, nullable=true)
+     * @ORM\Column(type="decimal", precision=6, scale=2, nullable=true)
     */
     protected $points;
 

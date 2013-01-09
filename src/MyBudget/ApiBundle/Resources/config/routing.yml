@@ -1,0 +1,7 @@
+api_homepage:
+    pattern:  /api
+    defaults: { _controller: ApiBundle:Default:index }
+
+api_entries:
+    pattern:  /api/entries
+    defaults: { _controller: ApiBundle:Default:getEntries }

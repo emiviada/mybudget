@@ -185,4 +185,24 @@ class Entry
     {
         return $this->value;
     }
+
+    /*
+     * toArray() method
+     * Converts the object into an array
+     */
+    public function toArray()
+    {
+        $array = array();
+
+        $array['id'] = $this->id;
+        $array['category'] = $this->getCategory()->toArray();
+        $array['date_entry'] = $this->date_entry;
+        $array['haber'] = $this->haber;
+        $array['value'] = $this->value;
+        $array['comment'] = $this->comment;
+        $array['created_at'] = $this->created_at;
+        $array['updated_at'] = $this->updated_at;
+
+        return $array;
+    }
 }
