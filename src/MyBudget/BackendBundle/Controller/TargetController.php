@@ -29,7 +29,7 @@ class TargetController extends Controller
 
         $entities = $em->getRepository('BackendBundle:Target')->findBy(
             array(), //Criteria (Filtering)
-            array(), //OrderBy (Sortering)
+            array('month' => 'desc'), //OrderBy (Sortering)
             $paginator['per_page'],
             $paginator['offset']
         );

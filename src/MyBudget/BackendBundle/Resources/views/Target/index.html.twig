@@ -18,9 +18,9 @@
             {% for entity in entities %}
                 <tr>
                     <td class="w5">{{ entity.id }}</td>
-                    <td class="w25 txtc">{{ entity.month|date('F, Y') }}</td>
-                    <td class="w15 txtc">${{ entity.amount }}</td>
-                    <td class="w20 txtc">{{ entity.points }}</td>
+                    <td class="w35 txtc">{{ entity.month | date('F, Y') }}</td>
+                    <td class="w15 txtc">{{ entity.amount | price('2', app.request.locale) }}</td>
+                    <td class="w20 txtc">{{ entity.points | number_format(0, ',', '.') }}</td>
                     <td class="w25 txtc">
                         <ul class="list-actions">
                             <li>

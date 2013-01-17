@@ -15,6 +15,12 @@ a:hover {
 }
 
 /**** Widths ****/
+.w5 {
+	width: 5%;
+}
+.w10 {
+	width: 10%;
+}
 .w15 {
 	width: 15%;
 }
@@ -23,6 +29,9 @@ a:hover {
 }
 .w25 {
 	width: 25%;
+}
+.w35 {
+	width: 35%;
 }
 .w40 {
 	width: 40%;
@@ -125,6 +134,17 @@ ul.error_list {
 }
 ul.list-actions li {
 	display: inline;
+}
+
+/**** Forms ****/
+.target-month select {
+	margin-right: 10px;
+}
+.target-month select:nth-child(2) {
+	width: 110px;
+}
+.target-month select:last-child {
+	display: none;
 }
 
 /**** Pagination ****/
