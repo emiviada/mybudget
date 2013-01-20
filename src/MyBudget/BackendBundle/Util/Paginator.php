@@ -23,7 +23,7 @@ class Paginator
         $paginator['left'] = $page - 1;
         $paginator['right'] = $page + 1;
         $paginator['num_pages'] = ceil($paginator['total'] / $perPage);
-        $paginator['offset'] = (($perPage * $page) - ($perPage - 1));
+        $paginator['offset'] = (($perPage * $page) - $perPage);
         $paginator['until'] = $perPage * $page;
         $paginator['have_to_paginate'] = ($paginator['num_pages'] > 1)? 1 : 0;
         if ($paginator['num_pages'] > 5) {

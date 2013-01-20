@@ -23,14 +23,30 @@
         <h3>{{ today | localeDate('full', 'none', app.request.locale, 'MMMM Y') | capitalize }}</h3>
         <p><strong>Ingresos:</strong> <span class="positive">{{ ing.current | price('2', app.request.locale) }}</span></p>
         <p><strong>Gastos:</strong> <span class="negative">{{ out.current | price('2', app.request.locale) }}</span></p>
-        <p><strong>Objetivo:</strong> N/A</p>
+        <p>
+            <strong>Objetivo:</strong> {{ targets[0].amount | price('0', app.request.locale) }}
+            {% if targets[0].points is not null %}
+                {% set qual = (targets[0].points > 0)? 'positive' : 'negative' %}
+                <span class="{{ qual }}">({{ targets[0].points }})</span>
+            {% else %}
+                (N/A)
+            {% endif %}
+        </p>
     </div>
 
     <div class="dashboard-item-4 pln prn mbn">
         <h3>{{ prevMonth | localeDate('full', 'none', app.request.locale, 'MMMM Y') | capitalize }}</h3>
         <p><strong>Ingresos:</strong> <span class="positive">{{ ing.previous | price('2', app.request.locale) }}</span></p>
         <p><strong>Gastos:</strong> <span class="negative">{{ out.previous | price('2', app.request.locale) }}</span></p>
-        <p><strong>Objetivo:</strong> N/A</p>
+        <p>
+            <strong>Objetivo:</strong> {{ targets[1].amount | price('0', app.request.locale) }}
+            {% if targets[1].points is not null %}
+                {% set qual = (targets[1].points > 0)? 'positive' : 'negative' %}
+                <span class="{{ qual }}">({{ targets[1].points }})</span>
+            {% else %}
+                (N/A)
+            {% endif %}
+        </p>
     </div>
 
     {% render "BackendBundle:Chart:progression" with {} %}

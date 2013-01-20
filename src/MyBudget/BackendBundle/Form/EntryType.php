@@ -5,12 +5,20 @@ namespace MyBudget\BackendBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Doctrine\ORM\EntityRepository;
 
 class EntryType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('category', null, array('empty_value' => 'Selecciona...'));
+        $builder->add('category', 'entity', array(
+            'class' => 'CategoryBundle:Category',
+            'query_builder' => function(EntityRepository $er) {
+                return $er->createQueryBuilder('c')
+                    ->orderBy('c.name', 'ASC');
+            },
+            'empty_value' => 'Selecciona...'
+        ));
         $builder->add('date_entry', 'date', array(
             'widget' => 'single_text',
             'format' => 'dd/MM/yyyy',

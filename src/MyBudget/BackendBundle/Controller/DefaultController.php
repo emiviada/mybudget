@@ -43,6 +43,15 @@ class DefaultController extends Controller
                     $out[$key] += $entry->getValue();
             }
         }
+
+        //Get targets from last two months
+        $targetRepository = $em->getRepository('BackendBundle:Target');
+        $targets = $targetRepository->findBy(
+            array(), //Criteria (Filtering)
+            array('month' => 'desc'), //OrderBy (Sortering)
+            2,
+            0
+        );
         
         return $this->render('BackendBundle:Default:index.html.twig', array(
         	'since' => $oldest->getDateEntry(),
@@ -52,7 +61,8 @@ class DefaultController extends Controller
             'today' => $today,
             'prevMonth' => $prevMonth,
             'ing' => $ing,
-            'out' => $out
+            'out' => $out,
+            'targets' => $targets
     	));
     }
 }
