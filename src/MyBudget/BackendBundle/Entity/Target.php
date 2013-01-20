@@ -7,7 +7,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="MyBudget\BackendBundle\Entity\TargetRepository")
  * @ORM\Table(name="target")
  */
 class Target
@@ -147,5 +147,23 @@ class Target
     public function __toString()
     {
         return $this->month;
+    }
+
+    /*
+     * toArray() method
+     * Converts the object into an array
+     */
+    public function toArray()
+    {
+        $array = array();
+
+        $array['id'] = $this->id;
+        $array['month'] = $this->month;
+        $array['amount'] = $this->amount;
+        $array['points'] = $this->points;
+        $array['created_at'] = $this->created_at;
+        $array['updated_at'] = $this->updated_at;
+
+        return $array;
     }
 }

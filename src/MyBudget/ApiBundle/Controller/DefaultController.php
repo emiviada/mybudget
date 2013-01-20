@@ -48,4 +48,40 @@ class DefaultController extends Controller
 
     	return $response;
     }
+
+    /*
+     * getTargets Controller
+     * @desc Get the targets (Could be filtered)
+     * @return JSON
+     */
+    public function getTargetsAction()
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+        $request = $this->get('request');
+        
+        $from = ($request->query->has('from'))? new \DateTime($request->query->get('from')) : null;
+        $to = ($request->query->has('to'))? new \DateTime($request->query->get('to')) : null;
+
+        $response = new Response();
+        
+        $targets = $em->getRepository('BackendBundle:Target')->getFromTo($from, $to);
+        $aTargets = array();
+        $count = count($targets);
+        if ($count) {
+            foreach ($targets as $target) {
+                $aTargets[] = $target->toArray();
+            }
+        }
+        $statusCode = 200;
+
+        $result['status'] = $statusCode;
+        $result['message'] = "Success";
+        $result['count'] = $count;
+        $result['results'] = $aTargets;
+
+        $response->setStatusCode($statusCode);
+        $response->setContent(json_encode($result));
+
+        return $response;
+    }
 }

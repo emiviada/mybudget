@@ -78,4 +78,64 @@ class ChartController extends Controller
         	'chart' => $chart
     	));
     }
+
+    /*
+     * targets() action
+     * @desc Renders the targets chart
+     */
+    public function targetsAction()
+    {
+        $request = $this->get('request');
+        $apiUrl = $request->getScheme().'://'.$request->getHttpHost().'/api/targets';
+        $result = json_decode(file_get_contents($apiUrl), true);
+
+        if ($result['status'] != 200)
+            die('ERROR!!');
+
+        $months = array();
+        $positive = array();
+        $negative = array();
+
+        if ($result['count'] > 0) {
+
+            foreach ($result['results'] as $k => $item) {
+                //Get the months to x axis
+                $itemDate = new \DateTime($item['month']['date']);
+                $mText = $itemDate->format('M Y');
+                if (!in_array($mText, $months))
+                    $months[] = $mText;
+
+                if (is_null($item['points'])) {
+                    $positive[] = $negative[] = 0;
+                    continue;
+                }
+
+                if ($item['points'] > 0) {
+                    $positive[] = (float) $item['points'];
+                    $negative[] = 0;
+                } else {
+                    $negative[] = (float) $item['points'];
+                    $positive[] = 0;
+                }
+            }
+        }
+
+        $series = array(
+            array("name" => "Positivo", "data" => $positive, "color" => "#55aa55"),
+            array("name" => "Negativo", "data" => $negative, "color" => "#dd3333")
+        );
+
+        $chart = new Highchart();
+        $chart->chart->renderTo('month-targets');  // The #id of the div where to render the chart
+        $chart->chart->type('column');
+        $chart->title->text('Objetivos mensuales');
+        $chart->xAxis->title(array('text'  => "Meses"));
+        $chart->xAxis->categories($months);
+        $chart->yAxis->title(array('text'  => "Points"));
+        $chart->series($series);
+        
+        return $this->render('BackendBundle:Chart:targets.html.twig', array(
+            'chart' => $chart
+        ));
+    }
 }

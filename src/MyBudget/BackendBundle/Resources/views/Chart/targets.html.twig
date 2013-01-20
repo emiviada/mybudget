@@ -1,9 +1,8 @@
 {% use '::javascript.html.twig' %}
 
-<div id="twelve-months" class="twelve-months mbl"></div>
+<div id="month-targets" class="month-targets"></div>
 
 {% block javascripts %}
-    {{ parent() }}
     <script type="text/javascript">
         {{ chart(chart) }}
     </script>

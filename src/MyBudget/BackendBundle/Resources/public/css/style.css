@@ -170,7 +170,11 @@ ul.list-actions li {
 }
 
 /**** Charts ****/
-.twelve-months {
+.twelve-months,
+.month-targets {
+	float: left;
+	clear: both;
+	width: 100%;
 	min-width: 400px;
 	height: 400px;
 	margin: 0 auto;
