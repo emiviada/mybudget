@@ -72,6 +72,7 @@ class ChartController extends Controller
         $chart->xAxis->title(array('text'  => "Meses"));
         $chart->xAxis->categories($months);
         $chart->yAxis->title(array('text'  => "$(pesos)"));
+        $chart->yAxis->alternateGridColor('#f8f8f8');
         $chart->series($series);
         
         return $this->render('BackendBundle:Chart:progression.html.twig', array(
@@ -128,10 +129,12 @@ class ChartController extends Controller
         $chart = new Highchart();
         $chart->chart->renderTo('month-targets');  // The #id of the div where to render the chart
         $chart->chart->type('column');
+        $chart->plotOptions->series(array('shadow' =>  false));
         $chart->title->text('Objetivos mensuales');
         $chart->xAxis->title(array('text'  => "Meses"));
         $chart->xAxis->categories($months);
         $chart->yAxis->title(array('text'  => "Points"));
+        $chart->yAxis->alternateGridColor('#f8f8f8');
         $chart->series($series);
         
         return $this->render('BackendBundle:Chart:targets.html.twig', array(
