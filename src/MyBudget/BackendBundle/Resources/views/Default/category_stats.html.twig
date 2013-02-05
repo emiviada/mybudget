@@ -1,0 +1,17 @@
+<div class="dashboard-item-3 mbn mrl pln prn">
+    <h3>Por Categoría</h3>
+    <select name="category" size="1">
+        {% if categories|length > 0 %}
+            {% for category in categories %}
+                <option value="{{ category.id }}" {% if category.id == default_category %} selected="selected" {% endif %}>
+                    {{ category.name }}
+                </option>
+            {% endfor %}
+        {% endif %}
+    </select>
+    <p><strong>Este mes:</strong> {{ category_stats.this_month | price('2', app.request.locale) }}</p>
+    <p><strong>Promedio:</strong> {{ category_stats.average | price('2', app.request.locale) }}</p>
+    <p><strong>Inflación:</strong> 15%</p>
+</div>
+
+<div id="by-category" class="by-category mbl"></div>

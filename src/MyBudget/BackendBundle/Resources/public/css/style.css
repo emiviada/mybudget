@@ -99,6 +99,17 @@ a:hover {
     border-radius: 5px;
     display: inline-block;
 }
+.dashboard-item-3 {
+	float: left;
+	width: 310px;
+	background-color: whitesmoke;
+	border: 1px solid #ddd;
+	-moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    border-radius: 5px;
+    display: inline-block;
+}
 .dashboard-item-4 {
 	float: left;
 	width: 200px;
@@ -178,4 +189,12 @@ ul.list-actions li {
 	min-width: 400px;
 	height: 400px;
 	margin: 0 auto;
+}
+.by-category {
+	float: left;
+	clear: right;
+	width: 60%;
+	height: 300px;
+	margin: 0 auto;
+	background-color: whitesmoke;
 }

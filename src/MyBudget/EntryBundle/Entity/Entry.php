@@ -21,7 +21,7 @@ class Entry
 	protected $id;
 
 	/** 
-     * @ORM\ManyToOne(targetEntity="MyBudget\CategoryBundle\Entity\Category")
+     * @ORM\ManyToOne(targetEntity="MyBudget\CategoryBundle\Entity\Category", inversedBy="entries")
      * @Assert\NotBlank(message = "Debes elegir una categoría.")
     */
 	protected $category;

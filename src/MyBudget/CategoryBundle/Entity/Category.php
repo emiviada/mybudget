@@ -87,6 +87,12 @@ class Category
      */
     private $updated_at;
 
+    /**
+     * One-To-Many relationship
+     * @ORM\OneToMany(targetEntity="MyBudget\EntryBundle\Entity\Entry", mappedBy="category", cascade={"persist", "remove", "merge"}, orphanRemoval=true)
+     */
+    private $entries;
+
 	/** Setters **/
 	public function setName($name)
 	{
@@ -292,6 +298,16 @@ class Category
     public function getChildren()
     {
         return $this->children;
+    }
+
+    /**
+     * Get entries
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getEntries()
+    {
+        return $this->entries;
     }
 
     /*

@@ -53,4 +53,8 @@
 
     {% render "BackendBundle:Chart:targets" with {} %}
 
+    <div class="refresh-category">
+        {% render "BackendBundle:Default:categoryStats" with { 'today': today } %}
+    </div>
+
 {% endblock %}

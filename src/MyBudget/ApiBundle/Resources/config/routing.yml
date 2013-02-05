@@ -6,6 +6,10 @@ api_entries:
     pattern:  /api/entries
     defaults: { _controller: ApiBundle:Default:getEntries }
 
+api_entries_search:
+    pattern:  /api/entries/search
+    defaults: { _controller: ApiBundle:Default:searchEntries }
+
 api_targets:
     pattern:  /api/targets
     defaults: { _controller: ApiBundle:Default:getTargets }
