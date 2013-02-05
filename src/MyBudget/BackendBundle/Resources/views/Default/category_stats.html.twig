@@ -14,4 +14,4 @@
     <p><strong>Inflación:</strong> 15%</p>
 </div>
 
-<div id="by-category" class="by-category mbl"></div>
+{% render "BackendBundle:Chart:byCategory" with { 'data': api_result } %}

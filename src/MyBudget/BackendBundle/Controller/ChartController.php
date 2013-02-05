@@ -141,4 +141,47 @@ class ChartController extends Controller
             'chart' => $chart
         ));
     }
+
+    /*
+     * byCategory() action
+     * @desc Renders the chart by cateogry
+     */
+    public function byCategoryAction($data)
+    {
+        $categories = array();
+        $acum = array();
+        if (count($data) > 0) {
+            foreach ($data as $item) {
+                $mkey = substr($item['date_entry']['date'], 0, 7);
+                $acum[$mkey] = (isset($acum[$mkey]))? $acum[$mkey] + (float) $item['value'] : (float) $item['value'];
+            }
+        }
+        $this_month = array_pop($acum);
+        array_splice($acum, -count($acum), -12);
+        
+        $values = array();
+        foreach ($acum as $mKey => $value) {
+            $categories[] = date('M Y', mktime(0, 0, 0, substr($mKey, 5, 2), 1, substr($mKey, 0, 4)));
+            $values[] = $value;
+        }
+
+        $series = array(
+            array("name" => "Gastos", "data" => $values, "color" => "#3D96AE")
+        );
+        
+        $chart = new Highchart();
+        $chart->chart->renderTo('by-category');  // The #id of the div where to render the chart
+        $chart->chart->type('column');
+        $chart->plotOptions->series(array('shadow' =>  false));
+        $chart->title->text('Por Categoria');
+        $chart->xAxis->title(array('text'  => "Meses"));
+        $chart->xAxis->categories($categories);
+        $chart->yAxis->title(array('text'  => "$(pesos)"));
+        $chart->yAxis->alternateGridColor('#f8f8f8');
+        $chart->series($series);
+        
+        return $this->render('BackendBundle:Chart:byCategory.html.twig', array(
+            'chart' => $chart
+        ));
+    }
 }

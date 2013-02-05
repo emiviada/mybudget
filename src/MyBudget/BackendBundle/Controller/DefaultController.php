@@ -135,7 +135,8 @@ class DefaultController extends Controller
 
         return $this->render('BackendBundle:Default:category_stats.html.twig', array(
             'categories' => $categories,
-            'category_stats' => $category_stats
+            'category_stats' => $category_stats,
+            'api_result' => $result['results']
         ));
     }
 }

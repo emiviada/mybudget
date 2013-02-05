@@ -1,0 +1,9 @@
+{% use '::javascript.html.twig' %}
+
+<div id="by-category" class="by-category mbl"></div>
+
+{% block javascripts %}
+    <script type="text/javascript">
+        {{ chart(chart) }}
+    </script>
+{% endblock %}
