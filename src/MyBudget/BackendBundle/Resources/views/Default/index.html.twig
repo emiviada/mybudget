@@ -9,7 +9,7 @@
         <a href="{{ path('entry_new') }}" title="Agregar Movimiento">Agregar Movimiento</a>
     </div>
 
-    <div class="dashboard-item-2 mbn pln prn mrl">
+    <div class="dashboard-item-2 rounded5 mbn pln prn mrl">
     	<h3>Balance</h3>
     	<p>
     		<strong>Per&iacute;odo: </strong>
@@ -19,7 +19,7 @@
     	<p><strong>Saldo:</strong> <span class="highlight {{ balance_class }}">{{ balance | price('2', app.request.locale) }}</span></p>
     </div>
 
-    <div class="dashboard-item-4 pln prn mbn mrl">
+    <div class="dashboard-item-4 rounded5 pln prn mbn mrl">
         <h3>{{ today | localeDate('full', 'none', app.request.locale, 'MMMM Y') | capitalize }}</h3>
         <p><strong>Ingresos:</strong> <span class="positive">{{ ing.current | price('2', app.request.locale) }}</span></p>
         <p><strong>Gastos:</strong> <span class="negative">{{ out.current | price('2', app.request.locale) }}</span></p>
@@ -34,7 +34,7 @@
         </p>
     </div>
 
-    <div class="dashboard-item-4 pln prn mbn">
+    <div class="dashboard-item-4 rounded5 pln prn mbn">
         <h3>{{ prevMonth | localeDate('full', 'none', app.request.locale, 'MMMM Y') | capitalize }}</h3>
         <p><strong>Ingresos:</strong> <span class="positive">{{ ing.previous | price('2', app.request.locale) }}</span></p>
         <p><strong>Gastos:</strong> <span class="negative">{{ out.previous | price('2', app.request.locale) }}</span></p>
@@ -50,7 +50,7 @@
     </div>
 
     <div class="refresh-category">
-        {% render "BackendBundle:Default:categoryStats" with { 'today': today } %}
+        {% render "BackendBundle:Default:categoryStats" with { 'category_id': default_category, 'today': today } %}
     </div>
 
     {% render "BackendBundle:Chart:progression" with {} %}

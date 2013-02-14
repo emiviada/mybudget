@@ -1,9 +1,9 @@
-<div class="dashboard-item-3 mbn mrl pln prn">
+<div class="dashboard-item-3 rounded5 mbn mrl pln prn">
     <h3>Por Categoría</h3>
-    <select name="category" size="1">
+    <select name="category" size="1" class="for-category-dropdown">
         {% if categories|length > 0 %}
             {% for category in categories %}
-                <option value="{{ category.id }}" {% if category.id == default_category %} selected="selected" {% endif %}>
+                <option value="{{ category.id }}" {% if category.id == selected_category_id %} selected="selected" {% endif %}>
                     {{ category.name }}
                 </option>
             {% endfor %}

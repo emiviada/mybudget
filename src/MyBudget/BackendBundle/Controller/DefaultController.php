@@ -72,7 +72,7 @@ class DefaultController extends Controller
      * categoryStats() action (Component shown on Dashboard)
      * @desc Renders the category stats (and chart)
      */
-    public function categoryStatsAction($today)
+    public function categoryStatsAction($category_id, $today)
     {
         $em = $this->getDoctrine()->getEntityManager();
         $categoryRepository = $em->getRepository('CategoryBundle:Category');
@@ -85,8 +85,6 @@ class DefaultController extends Controller
         );
 
         //Category stats
-        $category_id = ($request->query->has('category_id'))? $request->query->get('category_id') :
-                        $this->container->getParameter('default_category');
         $apiUrl = $request->getScheme().'://'.$request->getHttpHost().'/api/entries/search?category_id='.$category_id;
         $result = json_decode(file_get_contents($apiUrl), true);
         $records = $result['count'];
@@ -108,6 +106,9 @@ class DefaultController extends Controller
                 }
             }
 
+            if (is_null($today)) {
+                $today = new \DateTime();
+            }
             $todayTimestamp = $today->getTimestamp();
             $thisYear = date('Y', $todayTimestamp);
             $thisMonth = date('n', $todayTimestamp);
@@ -124,18 +125,22 @@ class DefaultController extends Controller
                     if (isset($category_stats['by_month'][$year][$month])) {
                         $z++;
                         $acum += $category_stats['by_month'][$year][$month];
+                    } else {
+                        $category_stats['by_month'][$year][$month] = 0;
                     }
                     $year = ($m == 12)? $year + 1 : $year;
                 }
             }
 
-            $category_stats['this_month'] = $category_stats['by_month'][$thisYear][$thisMonth];
+            $category_stats['this_month'] = (isset($category_stats['by_month'][$thisYear][$thisMonth]))? 
+                                                $category_stats['by_month'][$thisYear][$thisMonth]: 0;
             $category_stats['average'] = round($acum / $z, 2);
         }
 
         return $this->render('BackendBundle:Default:category_stats.html.twig', array(
             'categories' => $categories,
             'category_stats' => $category_stats,
+            'selected_category_id' => $category_id,
             'api_result' => $result['results']
         ));
     }

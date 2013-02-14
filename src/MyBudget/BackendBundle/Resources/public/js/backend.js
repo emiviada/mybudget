@@ -12,25 +12,8 @@
 			 * This is executed First of all.
 			 */
 			init : function() {
-				/*var datepicker_field = $('.datepicker-field'),
-                    myDate,
-                    input_value,
-                    formatted;
-
-                //Set default date if we're editing
-                input_value = datepicker_field.val();
-                formatted = input_value.substring(6, 10) + '/' + input_value.substring(3, 5) + '/' + input_value.substring(0, 2);
-                myDate = new Date(formatted);
-
-                datepicker_field.datepicker({
-                    showOn: "button",
-                    buttonImage: "/bundles/backend/images/calendar-icon.jpg",
-                    buttonImageOnly: true,
-                    dateFormat: "dd/mm/yy",
-                    defaultDate: myDate
-                });*/
-
-                var datepicker_fields = $('.datepicker-field'),
+				
+				var datepicker_fields = $('.datepicker-field'),
                     myDate,
                     input_value,
                     formatted;
@@ -75,6 +58,27 @@
 			 */
 			'backend' : function() {
 				
+				//Ajax call when the drop-down for category changes
+				$('.for-category-dropdown').on('change', function (e) {
+					var dropdown = $(e.currentTarget),
+						categoryId = dropdown.val(),
+						refreshDiv = $('.refresh-category');
+					
+					$.ajax({
+				      	url: "/refresh-by-category/" + categoryId,
+				      	type: "get",
+				      	beforeSend: function() {
+				      		$('<div>', { class: 'loading' }).height(refreshDiv.height()).appendTo(refreshDiv);
+				      	},
+				      	success: function(data) {
+				        	refreshDiv.html(data);
+				      	},
+				      	error: function() {
+				        	console.log('ERROR!!!');
+				      	}   
+				    });
+				});
+
 			}
 		}
 	};

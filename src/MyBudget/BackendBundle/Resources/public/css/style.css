@@ -42,6 +42,14 @@ a:hover {
 	height: 75px;
 }
 
+/**** Rounded corners ****/
+.rounded5 {
+	-moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    border-radius: 5px;
+}
+
 /**** Text ****/
 .txtc {
 	text-align: center !important;
@@ -93,10 +101,6 @@ a:hover {
 	width: 430px;
 	background-color: whitesmoke;
 	border: 1px solid #ddd;
-	-moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    -khtml-border-radius: 5px;
-    border-radius: 5px;
     display: inline-block;
 }
 .dashboard-item-3 {
@@ -104,22 +108,14 @@ a:hover {
 	width: 310px;
 	background-color: whitesmoke;
 	border: 1px solid #ddd;
-	-moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    -khtml-border-radius: 5px;
-    border-radius: 5px;
-    display: inline-block;
+	display: inline-block;
 }
 .dashboard-item-4 {
 	float: left;
 	width: 200px;
 	background-color: whitesmoke;
 	border: 1px solid #ddd;
-	-moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    -khtml-border-radius: 5px;
-    border-radius: 5px;
-    display: inline-block;
+	display: inline-block;
 }
 .highlight {
 	font-size: 20px;
@@ -133,7 +129,19 @@ a:hover {
 .shortcut {
 	border-bottom: 1px solid #ccc;
 }
-
+.refresh-category {
+	float: left;
+	width: 100%;
+}
+div.loading {
+	position: relative;
+	width: 100%;
+	z-index: 99;
+	top: 0;
+	left: 0;
+	opacity: .4;
+	background: url(../images/ajax_loader_gray_48.gif) no-repeat gray 50%;
+}
 /**** Lists ****/
 ul {
 	list-style-type: none;

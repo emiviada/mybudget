@@ -2,6 +2,10 @@ BackendBundle_homepage:
     pattern:  /hello/{name}
     defaults: { _controller: BackendBundle:Default:index }
 
+BackendBundle_refresh_by_category:
+    pattern: /refresh-by-category/{category_id}
+    defaults: { _controller: BackendBundle:Default:categoryStats, category_id: %default_category%, today: null }
+
 BackendCategory:
     resource: "@BackendBundle/Resources/config/routing/category.yml"
     prefix: /category
