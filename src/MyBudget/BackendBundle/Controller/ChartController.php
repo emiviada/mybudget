@@ -146,18 +146,21 @@ class ChartController extends Controller
      * byCategory() action
      * @desc Renders the chart by cateogry
      */
-    public function byCategoryAction($data)
+    public function byCategoryAction($data, $start)
     {
         $categories = array();
         $acum = array();
-        if (count($data) > 0) {
-            foreach ($data as $item) {
-                $mkey = substr($item['date_entry']['date'], 0, 7);
-                $acum[$mkey] = (isset($acum[$mkey]))? $acum[$mkey] + (float) $item['value'] : (float) $item['value'];
+        $startMonth = strtotime($start);
+        if (count($data['by_month']) > 0) {
+            foreach ($data['by_month'] as $year => $months) {
+                foreach ($months as $month => $value) {
+                    $m = strtotime($year.'-'.$month.'-01');
+                    if ($m >= $startMonth) {
+                        $acum[$year.'-'.$month] = $value;
+                    }
+                }
             }
         }
-        $this_month = array_pop($acum);
-        array_splice($acum, -count($acum), -12);
         
         $values = array();
         foreach ($acum as $mKey => $value) {

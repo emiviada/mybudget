@@ -59,7 +59,7 @@
 			'backend' : function() {
 				
 				//Ajax call when the drop-down for category changes
-				$('.for-category-dropdown').on('change', function (e) {
+				$('.container').delegate('.for-category-dropdown', 'change', function (e) {
 					var dropdown = $(e.currentTarget),
 						categoryId = dropdown.val(),
 						refreshDiv = $('.refresh-category');

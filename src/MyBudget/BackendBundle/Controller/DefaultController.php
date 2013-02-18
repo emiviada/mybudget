@@ -115,7 +115,7 @@ class DefaultController extends Controller
             $lastMonthTimestamp = $today->modify('-1 month')->getTimestamp();
             $lastYear = date('Y', $lastMonthTimestamp);
             $lastMonth = date('n', $lastMonthTimestamp);
-            $startYear = ($lastMonth == 12)? $lastYear : $lastYear - 1;
+            $startYear = ($lastMonth == 12)? $thisYear : $thisYear - 1;
             $startMonth = ($lastMonth == 12)? 1 : $lastMonth + 1;
 
             $z = 0;$acum = 0;
@@ -128,6 +128,7 @@ class DefaultController extends Controller
                     } else {
                         $category_stats['by_month'][$year][$month] = 0;
                     }
+                    ksort($category_stats['by_month'][$year]);
                     $year = ($m == 12)? $year + 1 : $year;
                 }
             }
@@ -141,7 +142,7 @@ class DefaultController extends Controller
             'categories' => $categories,
             'category_stats' => $category_stats,
             'selected_category_id' => $category_id,
-            'api_result' => $result['results']
+            'start_chart_from' => $startYear.'-'.$startMonth.'-01'
         ));
     }
 }
