@@ -18,6 +18,7 @@
                     input_value,
                     formatted;
 
+                //Datapicker
                 $.each (datepicker_fields, function(i, field) {
                     //Set default date if we're editing
                     field = $(field);
@@ -32,6 +33,17 @@
                         dateFormat: "dd/mm/yy",
                         defaultDate: myDate
                     });
+                });
+
+                //Delete confirmation
+                $('.delete-confirmation').on('click', function(e) {
+                	var _return = false;
+
+                	if (confirm('¿Estas seguro?')) {
+                		_return = true;
+                	}
+
+                	return _return;
                 });
 
 			},

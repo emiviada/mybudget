@@ -4,6 +4,7 @@ namespace MyBudget\BackendBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Ob\HighchartsBundle\Highcharts\Highchart;
+use Zend\Json\Expr;
 
 
 class ChartController extends Controller
@@ -74,6 +75,12 @@ class ChartController extends Controller
         $chart->yAxis->title(array('text'  => "$(pesos)"));
         $chart->yAxis->alternateGridColor('#f8f8f8');
         $chart->series($series);
+
+        //Tooltip
+        $formatter = new Expr('function () {
+             return this.x + ": $" + this.y;
+         }');
+        $chart->tooltip->formatter($formatter);
         
         return $this->render('BackendBundle:Chart:progression.html.twig', array(
         	'chart' => $chart
@@ -136,6 +143,12 @@ class ChartController extends Controller
         $chart->yAxis->title(array('text'  => "Points"));
         $chart->yAxis->alternateGridColor('#f8f8f8');
         $chart->series($series);
+
+        //Tooltip
+        $formatter = new Expr('function () {
+             return this.x + ": $" + this.y;
+         }');
+        $chart->tooltip->formatter($formatter);
         
         return $this->render('BackendBundle:Chart:targets.html.twig', array(
             'chart' => $chart
@@ -182,6 +195,12 @@ class ChartController extends Controller
         $chart->yAxis->title(array('text'  => "$(pesos)"));
         $chart->yAxis->alternateGridColor('#f8f8f8');
         $chart->series($series);
+
+        //Tooltip
+        $formatter = new Expr('function () {
+             return this.x + ": $" + this.y;
+         }');
+        $chart->tooltip->formatter($formatter);
         
         return $this->render('BackendBundle:Chart:byCategory.html.twig', array(
             'chart' => $chart

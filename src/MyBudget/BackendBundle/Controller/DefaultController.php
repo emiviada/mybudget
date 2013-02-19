@@ -136,13 +136,39 @@ class DefaultController extends Controller
             $category_stats['this_month'] = (isset($category_stats['by_month'][$thisYear][$thisMonth]))? 
                                                 $category_stats['by_month'][$thisYear][$thisMonth]: 0;
             $category_stats['average'] = round($acum / $z, 2);
+
+            //Inflation calculation
+            $lastMonthValue = $category_stats['by_month'][$lastYear][$lastMonth];
+            $iMonthlyTimestamp = $today->modify('-1 month')->getTimestamp(); //$today it was already back 1 month
+            $iMonthlyYear = date('Y', $iMonthlyTimestamp);
+            $iMonthlyMonth = date('n', $iMonthlyTimestamp);
+            $iMonthlyValue = $category_stats['by_month'][$iMonthlyYear][$iMonthlyMonth];
+            $iQuarterlyTimestamp = $today->modify('-2 month')->getTimestamp(); //$today it was already back 1 month
+            $iQuarterlyYear = date('Y', $iQuarterlyTimestamp);
+            $iQuarterlyMonth = date('n', $iQuarterlyTimestamp);
+            $iQuarterlyValue = $category_stats['by_month'][$iQuarterlyYear][$iQuarterlyMonth];
+            $iBiannuallyTimestamp = $today->modify('-3 month')->getTimestamp(); //$today it was already back 2 months
+            $iBiannuallyYear = date('Y', $iBiannuallyTimestamp);
+            $iBiannuallyMonth = date('n', $iBiannuallyTimestamp);
+            $iBiannuallyValue = $category_stats['by_month'][$iBiannuallyYear][$iBiannuallyMonth];
+            $iAnnuallyTimestamp = $today->modify('-6 month')->getTimestamp(); //$today it was already back 3 months
+            $iAnnuallyYear = date('Y', $iAnnuallyTimestamp);
+            $iAnnuallyMonth = date('n', $iAnnuallyTimestamp);
+            $iAnnuallyValue = (isset($category_stats['by_month'][$iAnnuallyYear][$iAnnuallyMonth]))? $category_stats['by_month'][$iAnnuallyYear][$iAnnuallyMonth] : 0;
+            $inflation = array(
+                'monthly' => ($iMonthlyValue > 0 && ($lastMonthValue > $iMonthlyValue))? round(($lastMonthValue / $iMonthlyValue) * 100 - 100, 2) : 0,
+                'quarterly' => ($iQuarterlyValue > 0 && ($lastMonthValue > $iQuarterlyValue))? round(($lastMonthValue / $iQuarterlyValue) * 100 - 100, 2) : 0,
+                'biannually' => ($iBiannuallyValue > 0 && ($lastMonthValue > $iBiannuallyValue))? round(($lastMonthValue / $iBiannuallyValue) * 100 - 100, 2) : 0,
+                'annual' => ($iAnnuallyValue > 0 && ($lastMonthValue > $iAnnuallyValue))? round(($lastMonthValue / $iAnnuallyValue) * 100 - 100, 2) : 0
+            );
         }
 
         return $this->render('BackendBundle:Default:category_stats.html.twig', array(
             'categories' => $categories,
             'category_stats' => $category_stats,
             'selected_category_id' => $category_id,
-            'start_chart_from' => $startYear.'-'.$startMonth.'-01'
+            'start_chart_from' => $startYear.'-'.$startMonth.'-01',
+            'inflation' => $inflation
         ));
     }
 }

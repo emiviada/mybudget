@@ -11,7 +11,10 @@
     </select>
     <p><strong>Este mes:</strong> {{ category_stats.this_month | price('2', app.request.locale) }}</p>
     <p><strong>Promedio:</strong> {{ category_stats.average | price('2', app.request.locale) }}</p>
-    <p><strong>Inflación:</strong> 15%</p>
+    <p><strong>Inflación</strong> (mensual): {{ inflation.monthly }}%</p>
+    <p><strong>Inflación</strong> (trimestral): {{ inflation.quarterly }}%</p>
+    <p><strong>Inflación</strong> (semestral): {{ inflation.biannually }}%</p>
+    <p><strong>Inflación</strong> (anual): {{ inflation.annual }}%</p>
 </div>
 
 {% render "BackendBundle:Chart:byCategory" with { 'data': category_stats, 'start': start_chart_from } %}
