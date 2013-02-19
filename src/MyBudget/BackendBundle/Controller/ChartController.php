@@ -196,6 +196,17 @@ class ChartController extends Controller
         $chart->yAxis->alternateGridColor('#f8f8f8');
         $chart->series($series);
 
+        $chart->yAxis->plotLines(array(
+            array(
+                'value' => $data['average'],
+                'id' => 'average',
+                'color' => '#cccccc',
+                'dashStyle' => 'ShortDash',
+                'width' => 1,
+                'zIndex' => 0
+            )
+        ));
+
         //Tooltip
         $formatter = new Expr('function () {
              return this.x + ": $" + this.y;
