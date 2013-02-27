@@ -143,6 +143,12 @@ div.loading {
 	background: url(../images/ajax_loader_gray_48.gif) no-repeat gray 50%;
 }
 /**** Lists ****/
+.records_list th a {
+	color: black;
+}
+.records_list th a:hover {
+	color: #aaa;
+}
 ul {
 	list-style-type: none;
 }

@@ -3,6 +3,7 @@
 namespace MyBudget\BackendBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Session\Session;
 use MyBudget\CategoryBundle\Entity\Category;
 use MyBudget\BackendBundle\Form\CategoryType;
 use MyBudget\BackendBundle\Util\Paginator;
@@ -23,21 +24,67 @@ class CategoryController extends Controller
         $request = $this->get('request');
         $items_per_list = $this->container->getParameter('items_per_list');
 
+        //Sorting
+        list($orderBy, $sortMode, $sortModeReverse) = $this->sorting();
+        $iconClass = ($sortMode == 'ASC')? "icon-chevron-up" : "icon-chevron-down";
+
         $all = $em->getRepository('CategoryBundle:Category')->findAll();
 
         $paginator = Paginator::getInfo(count($all), $items_per_list, $page, 'category_page');
 
         $entities = $em->getRepository('CategoryBundle:Category')->findBy(
             array(), //Criteria (Filtering)
-            array(), //OrderBy (Sortering)
+            array($orderBy => $sortMode), //OrderBy (Sortering)
             $paginator['per_page'],
             $paginator['offset']
         );
 
         return $this->render('BackendBundle:Category:index.html.twig', array(
             'entities' => $entities,
-            'paginator' => $paginator
+            'paginator' => $paginator,
+            'orderBy' => $orderBy,
+            'sort_mode_reverse' => $sortModeReverse,
+            'icon_class' => $iconClass
         ));
+    }
+
+    /**
+     * Filter Category list
+     */
+    public function filterAction($field, $mode)
+    {
+        $session = $this->get('session');
+
+        $sort = array(
+            'category' => array(
+                'field' => $field,
+                'mode' => $mode
+            )
+        );
+
+        $session->set('sort', json_encode($sort));
+
+        return $this->redirect($this->generateUrl('category'));
+    }
+
+    /**
+     * sorting method
+     */
+    public function sorting()
+    {
+        $session = $this->get('session');
+
+        $orderBy = "id";
+        $sortMode = "ASC";
+        $sortModeReverse = "DESC";
+        if ($session->has('sort')) {
+            $sort = json_decode($session->get('sort'), true);
+            $orderBy = $sort['category']['field'];
+            $sortMode = $sort['category']['mode'];
+            $sortModeReverse = ($sortMode == "ASC")? "DESC" : "ASC";
+        }
+
+        return array($orderBy, $sortMode, $sortModeReverse);
     }
 
     /**

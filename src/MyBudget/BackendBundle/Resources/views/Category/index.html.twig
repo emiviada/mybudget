@@ -6,8 +6,16 @@
     <table class="records_list table table-striped mbm">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Nombre</th>
+                <th>
+                    <a href="{{ path('category_filter', { 'field': 'id', 'mode': sort_mode_reverse }) }}" title="Ordenar por Id">
+                        Id {% if orderBy == 'id' %}<i class="{{ icon_class }}"></i>{% endif %}
+                    </a>
+                </th>
+                <th>
+                    <a href="{{ path('category_filter', { 'field': 'name', 'mode': sort_mode_reverse }) }}" title="Ordenar por Nombre">
+                        Nombre {% if orderBy == 'name' %}<i class="{{ icon_class }}"></i>{% endif %}
+                    </a>
+                </th>
                 <th>Padre</th>
                 <th>Descripci&oacute;n</th>
                 <th class="txtc">Acciones</th>
@@ -17,10 +25,10 @@
         {% if entities|length > 0 %}
             {% for entity in entities %}
                 <tr>
-                    <td>{{ entity.id }}</td>
+                    <td class="w10">{{ entity.id }}</td>
                     <td class="w20">{{ entity.name }}</td>
                     <td class="w15">{% if entity.parent %}{{ entity.parent }}{% else %}-{% endif %}</td>
-                    <td class="w40">{{ entity.description }}</td>
+                    <td class="w30">{{ entity.description }}</td>
                     <td class="w25 txtc">
                         <ul class="list-actions">
                             <li>
