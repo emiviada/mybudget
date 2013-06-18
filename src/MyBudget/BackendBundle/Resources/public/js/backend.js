@@ -91,6 +91,14 @@
 				    });
 				});
 
+				//Chart Tabs on dashboard
+				if ($('#tab-charts-menu').length) {
+					$('#tab-charts-menu a').click(function (e) {
+					    e.preventDefault();
+					    $(this).tab('show');
+					});
+				}
+
 			}
 		}
 	};

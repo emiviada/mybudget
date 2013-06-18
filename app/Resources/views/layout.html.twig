@@ -23,13 +23,14 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-                    <a class="brand" href="{{ path('homepage') }}">My Budget</a>
+                    {% set current_route = app.request.attributes.get('_route') %}
+                    <a class="brand {% if(current_route == 'homepage') %}active{% endif %}" href="{{ path('homepage') }}">My Budget</a>
                     {% if is_granted('ROLE_ADMIN') %}
                         <nav class="nav-collapse collapse">
                             <ul class="nav">
-                                <li {% if(app.request.attributes.get('_route') == 'category') %}class="active"{% endif %}><a href="{{ path('category_list') }}">Categor&iacute;as</a></li>
-                                <li {% if(app.request.attributes.get('_route') == 'entry') %}class="active"{% endif %}><a href="{{ path('entry_list') }}">Movimientos</a></li>
-                                <li {% if(app.request.attributes.get('_route') == 'target') %}class="active"{% endif %}><a href="{{ path('target_list') }}">Objetivos mensuales</a></li>
+                                <li {% if(current_route == 'category') %}class="active"{% endif %}><a href="{{ path('category_list') }}">Categor&iacute;as</a></li>
+                                <li {% if(current_route == 'entry') %}class="active"{% endif %}><a href="{{ path('entry_list') }}">Movimientos</a></li>
+                                <li {% if(current_route == 'target') %}class="active"{% endif %}><a href="{{ path('target_list') }}">Objetivos mensuales</a></li>
                                 <li><a href="{{ path('logout') }}">Cerrar Sesi&oacute;n</a></li>
                             </ul>
                         </nav>
@@ -42,6 +43,10 @@
         <div class="container">
             {% block body %}{% endblock %}
         </div>
+
+        <footer>
+            <p class="txtc muted">&copy; MyBudget</p>
+        </footer>
         
         {% include '::javascript.html.twig' %}
     </body>

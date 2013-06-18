@@ -53,8 +53,20 @@
         {% render "BackendBundle:Default:categoryStats" with { 'category_id': default_category, 'today': today } %}
     </div>
 
-    {% render "BackendBundle:Chart:progression" with {} %}
+    <ul class="nav nav-tabs" id="tab-charts-menu">
+        <li class="active"><a href="#last-months" data-toggle="tab">&Uacute;ltimos 12 meses</a></li>
+        <li><a href="#targets" data-toggle="tab">Objetivos mensuales</a></li>
+    </ul>
+    <div class="tab-content" id="tab-charts">
 
-    {% render "BackendBundle:Chart:targets" with {} %}
+        <div class="tab-pane fade active in" id="last-months">
+            {% render "BackendBundle:Chart:progression" with {} %}
+        </div>
+
+        <div class="tab-pane fade" id="targets">
+            {% render "BackendBundle:Chart:targets" with {} %}
+        </div>
+
+    </div>
 
 {% endblock %}
