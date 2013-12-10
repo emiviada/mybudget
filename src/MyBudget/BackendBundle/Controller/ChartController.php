@@ -69,6 +69,7 @@ class ChartController extends Controller
         $chart = new Highchart();
         $chart->chart->renderTo('twelve-months');  // The #id of the div where to render the chart
         $chart->chart->type('area');
+        $chart->credits->enabled(false);
         $chart->title->text('Últimos 12 meses');
         $chart->xAxis->title(array('text'  => "Meses"));
         $chart->xAxis->categories($months);
@@ -136,6 +137,7 @@ class ChartController extends Controller
         $chart = new Highchart();
         $chart->chart->renderTo('month-targets');  // The #id of the div where to render the chart
         $chart->chart->type('column');
+        $chart->credits->enabled(false);
         $chart->plotOptions->series(array('shadow' =>  false));
         $chart->title->text('Objetivos mensuales');
         $chart->xAxis->title(array('text'  => "Meses"));
@@ -188,6 +190,7 @@ class ChartController extends Controller
         $chart = new Highchart();
         $chart->chart->renderTo('by-category');  // The #id of the div where to render the chart
         $chart->chart->type('column');
+        $chart->credits->enabled(false);
         $chart->plotOptions->series(array('shadow' =>  false));
         $chart->title->text('Por Categoria');
         $chart->xAxis->title(array('text'  => "Meses"));

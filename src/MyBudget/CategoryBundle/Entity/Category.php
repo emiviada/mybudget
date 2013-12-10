@@ -301,6 +301,15 @@ class Category
     }
 
     /**
+     * isParent() method
+     * @return  Boolean
+     */
+    public function isParent()
+    {
+        return (count($this->getChildren()) > 0)? true : false;
+    }
+
+    /**
      * Get entries
      *
      * @return \Doctrine\Common\Collections\Collection 

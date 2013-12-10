@@ -77,6 +77,24 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getEntityManager();
         $categoryRepository = $em->getRepository('CategoryBundle:Category');
         $request = $this->get('request');
+        $inflation = array(
+            'monthly' => 0,
+            'quarterly' => 0,
+            'biannually' => 0,
+            'annual' => 0
+        );
+
+        if (is_null($today)) {
+            $today = new \DateTime();
+        }
+        $todayTimestamp = $today->getTimestamp();
+        $thisYear = date('Y', $todayTimestamp);
+        $thisMonth = date('n', $todayTimestamp);
+        $lastMonthTimestamp = $today->modify('-1 month')->getTimestamp();
+        $lastYear = date('Y', $lastMonthTimestamp);
+        $lastMonth = date('n', $lastMonthTimestamp);
+        $startYear = ($lastMonth == 12)? $thisYear : $thisYear - 1;
+        $startMonth = ($lastMonth == 12)? 1 : $lastMonth + 1;
 
         //Get categories
         $categories = $categoryRepository->findBy(
@@ -89,7 +107,10 @@ class DefaultController extends Controller
         $result = json_decode(file_get_contents($apiUrl), true);
         $records = $result['count'];
 
-        $category_stats = array();
+        $category_stats = array(
+            'this_month' => 0,
+            'average' => 0
+        );
         if ($result['status'] == 200 && $records > 0) {
             
             foreach ($result['results'] as $item) {
@@ -105,18 +126,6 @@ class DefaultController extends Controller
                     $category_stats['by_month'][$year][$month] = $value;
                 }
             }
-
-            if (is_null($today)) {
-                $today = new \DateTime();
-            }
-            $todayTimestamp = $today->getTimestamp();
-            $thisYear = date('Y', $todayTimestamp);
-            $thisMonth = date('n', $todayTimestamp);
-            $lastMonthTimestamp = $today->modify('-1 month')->getTimestamp();
-            $lastYear = date('Y', $lastMonthTimestamp);
-            $lastMonth = date('n', $lastMonthTimestamp);
-            $startYear = ($lastMonth == 12)? $thisYear : $thisYear - 1;
-            $startMonth = ($lastMonth == 12)? 1 : $lastMonth + 1;
 
             $z = 0;$acum = 0;
             for ($year = $startYear; $year <= $lastYear; $year++) {
@@ -135,7 +144,7 @@ class DefaultController extends Controller
 
             $category_stats['this_month'] = (isset($category_stats['by_month'][$thisYear][$thisMonth]))? 
                                                 $category_stats['by_month'][$thisYear][$thisMonth]: 0;
-            $category_stats['average'] = round($acum / $z, 2);
+            $category_stats['average'] = ($z > 0)? round($acum / $z, 2) : 0;
 
             //Inflation calculation
             $lastMonthValue = $category_stats['by_month'][$lastYear][$lastMonth];

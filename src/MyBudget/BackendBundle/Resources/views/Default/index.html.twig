@@ -20,7 +20,7 @@
     </div>
 
     <div class="dashboard-item-4 rounded5 pln prn mbn mrl">
-        <h3>{{ today | localeDate('full', 'none', app.request.locale, 'MMMM Y') | capitalize }}</h3>
+        <h3>{{ targets[0].month | localeDate('full', 'none', app.request.locale, 'MMMM Y') | capitalize }}</h3>
         <p><strong>Ingresos:</strong> <span class="positive">{{ ing.current | price('2', app.request.locale) }}</span></p>
         <p><strong>Gastos:</strong> <span class="negative">{{ out.current | price('2', app.request.locale) }}</span></p>
         <p>
@@ -35,7 +35,7 @@
     </div>
 
     <div class="dashboard-item-4 rounded5 pln prn mbn">
-        <h3>{{ prevMonth | localeDate('full', 'none', app.request.locale, 'MMMM Y') | capitalize }}</h3>
+        <h3>{{ targets[1].month | localeDate('full', 'none', app.request.locale, 'MMMM Y') | capitalize }}</h3>
         <p><strong>Ingresos:</strong> <span class="positive">{{ ing.previous | price('2', app.request.locale) }}</span></p>
         <p><strong>Gastos:</strong> <span class="negative">{{ out.previous | price('2', app.request.locale) }}</span></p>
         <p>

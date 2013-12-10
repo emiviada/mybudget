@@ -99,6 +99,19 @@ class DefaultController extends Controller
                                 $data[] = $entry->toArray();
                             }
                         }
+                        //Get subcategories (If it has)
+                        if ($category->isParent()) {
+                            $children = $category->getChildren();
+                            foreach ($children as $subcategory) {
+                                $entries = $subcategory->getEntries();
+                                $count = count($entries);
+                                if ($count) {
+                                    foreach ($entries as $entry) {
+                                        $data[] = $entry->toArray();
+                                    }
+                                }
+                            }
+                        }
                     } else { //Category NOT FOUND
                         $statusCode = 404;
                         $message = "Category does not be found.";
