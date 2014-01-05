@@ -93,7 +93,7 @@ class DefaultController extends Controller
         $lastMonthTimestamp = $today->modify('-1 month')->getTimestamp();
         $lastYear = date('Y', $lastMonthTimestamp);
         $lastMonth = date('n', $lastMonthTimestamp);
-        $startYear = ($lastMonth == 12)? $thisYear : $thisYear - 1;
+        $startYear = ($lastMonth == 12)? $thisYear - 1 : $thisYear;
         $startMonth = ($lastMonth == 12)? 1 : $lastMonth + 1;
 
         //Get categories
